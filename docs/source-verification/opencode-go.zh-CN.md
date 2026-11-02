@@ -16,5 +16,5 @@ DSH 的[模型配置说明](https://deepseek-harness.github.io/deepseek-harness/
 
 因此，订阅 endpoint 与按量 endpoint 的差异不会自动出现在记录里。只有 DSH route 使用专门、稳定的 Provider ID（例如 `opencode-go`）时才可按该 ID 精确自动归因。旧记录和 Provider ID 复用过的调用使用面板按会话/时间范围手动标记，`basis` 保存 `manual:<UTC 时间>`。同模型名本身不参与归因。
 
-默认登记使用 `USD`、月费 `0`（待用户登记实际支付额），Provider ID 留空。`opencode-go` 只是 OpenCode 自身示例路由名称，不是 DSH 的实际配置证据；维护者应先确认本机 DSH 配置，再填写专属且稳定的 Provider ID。额度窗口和比例只记录核验结论，本阶段不模拟。
+默认登记使用 `USD`、月费 `10`（官方公开价 $10/月，2026-11-02 核验；实付不同——如 Go Plus $40——可在面板修改），Provider ID 留空。`opencode-go` 只是 OpenCode 自身示例路由名称，不是 DSH 的实际配置证据；维护者应先确认本机 DSH 配置，再填写专属且稳定的 Provider ID。额度窗口和比例只记录核验结论，本阶段不模拟。
 

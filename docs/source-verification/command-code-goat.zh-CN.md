@@ -14,5 +14,5 @@
 
 DSH 自定义 API route 的 provider id 由用户设定，`llm/stream` 的 `options` 提供 route provider 与模型 id，不提供 endpoint、credential 或 Command Code account plan。默认登记不预填 Provider ID；仅在用户确认 GOAT route 使用专属、稳定的 ID 后，插件才可按该精确 ID 自动标注。若同一 ID/凭据之后改作 Provider 按量计划，旧记录不能仅靠模型名或 endpoint 可靠区分，应按会话/时间范围手动调整通道。
 
-默认套餐月费为 `0`（待用户登记实际账单），币种 USD，来源链接指向 GOAT 官方说明。额度规则仅存档核验，本阶段不实现窗口、百分比或剩余额度模拟。
+默认套餐月费为 `10`（官方公开价 $10/月，2026-11-02 核验；实付不同可在面板修改），币种 USD，来源链接指向 GOAT 官方说明。额度规则仅存档核验，本阶段不实现窗口、百分比或剩余额度模拟。
 

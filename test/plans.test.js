@@ -15,7 +15,7 @@ function plan(overrides = {}) {
 test('default plans leave provider ids empty until the DSH routes are verified', () => {
   const registry = defaultPlanRegistry()
   assert.deepEqual(registry.plans.map((item) => item.id), ['opencode-go', 'command-code-goat'])
-  assert.ok(registry.plans.every((item) => item.monthlyFee === 0 && item.match.providers.length === 0))
+  assert.ok(registry.plans.every((item) => item.monthlyFee === 10 && item.currency === 'USD' && item.match.providers.length === 0))
 })
 
 test('plan normalization validates currency, cycle, urls, ids and match shape', () => {
