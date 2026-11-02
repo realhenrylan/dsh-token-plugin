@@ -166,7 +166,7 @@ channel: {
 
 ### 9.5 端到端验收
 
-自动测试（`node --test`、`npm run check`）+ 真实 DSH 验证：调用 → 记录带 channel → 回本卡片 → 导出往返。测试至少覆盖：
+自动测试（`node --test`、`npm run check`）+ 真实 DSH 验证：调用 → 记录带 channel → 回本卡片 → 导出往返。逐项执行清单见 `docs/phase-2-9.5-acceptance-checklist.zh-CN.md`。测试至少覆盖：
 
 - 归因：provider 精确命中、大小写、歧义不标注、未知 provider 不标注、`match.models` 交集、同模型走双通道仅按 provider 区分、手动打标 `basis:manual:*`；
 - 记录往返：`normalizeRecord` 保留 `channel`、形状损坏整体丢弃、旧记录无字段、重启 / 导入导出不丢、复合指纹不因 `channel` 变化；
