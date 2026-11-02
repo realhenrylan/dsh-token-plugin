@@ -1,6 +1,6 @@
 {
   "name": "dsh-token-plugin",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "DeepSeek Harness usage & cost tracker plugin: per-call token/cache-hit stats, peak/off-peak billing, CSV/JSON/PNG export with custom destination, and persistent local storage. Ships a host half plus a web client half in one npm package; installs into a DSH profile as a dsh.bundle from a local package or a published release.",
   "keywords": [
     "deepseek",

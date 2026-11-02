@@ -123,3 +123,17 @@ npm run check      # DSH 插件契约
 - 记录计价正常（officialSummary priced 1061 条 ¥19.39 等，旧口径分列不变）。
 - 复验：`node --test` 154/154、`npm run check` OK、`sync-to-profile.mjs` 安装（profile=desktop）。
 
+## 9. 统一为「模型开发方官方价」单一口径（2026-11-03）
+
+背景：官方价参考金额已覆盖主要视图，但旧平台价链路（`autoCost`）仍在数据层、导出列与部分视图里与官方价并存，同一条调用可能出现两个不同金额；PNG 报告与工具调用表也仍读旧字段。产品定义已明确：**官方价 = 模型开发方的官方 API 按量价，与调用经过哪个平台无关**（DeepSeek 模型用 DeepSeek 官方人民币峰谷价，其他厂商用各自的官方价）。
+
+本次改动：
+
+- 宿主删除 `costFromUnit` / `unitSnapshotOf` / `costFor` / `SILICONFLOW_PRICING` / `DIGITALOCEAN_PRICING` / `dropUnitSnapshots` / `hasDigitalOceanRecords`；记录不再写 `unit` / `usdCnyRate` / `fxDate`，投影不再返回 `baseCost` / `peakValleyCost` / `autoCost`；聚合与日历桶只保留次数与 token。
+- 官方价快照是唯一金额来源：`officialFor()` 计算时把当时的官方价（含币种、分档、时段、来源、汇率）冻结进 `pricingSnapshot`；`officialOf()` 有快照就照快照算，目录更新不改写历史。
+- CSV 列删除 `baseCost,peakValleyCost,autoCost`，保留 `officialAmount,officialCurrency,officialStatus,officialSource,officialModel,officialFrozen`；`list` 新增 `legacyOfficialCount`（没有冻结官方价快照的旧记录条数）。
+- `repriceAll` 语义改为「先备份，再清空官方价快照、按当前官方目录重算全部历史」，不再需要 `includeOfficial`；`setPrices` 的 `reprice` 分支删除。
+- 前端删除 `costOf` / `splitTotals` / `daySplit` 与可编辑价格表、第三方平台价格表；概览、明细、日历、缓存列表、会话排行、PNG 报告与工具调用表全部走 `refOf` / `fmtRef`；PNG 与表格文案改为「高峰参考 / 空闲参考 / 等效参考合计」；「历史价格与重算」改为「历史记录与重算」。
+- 汇率只保留给订阅套餐中以美元计价的月费折算（`plansNeedUsdRate` / `fxRefresh`），人民币计价的套餐与官方价金额不受汇率影响。
+- 测试：`price-freeze` 改为验证官方价快照冻结（含 USD 快照按冻结汇率折算、缺价 `missing_price` 不按 0）；`provider-alias` 的 issue #19 复现改为经真实 seed 目录解析后计价（≈¥0.20）；`ui-render` / `client-i18n` / `pricing-host-api` 同步新口径。`node --test test/*.test.js` 182/182 通过，`node --check` 通过。
+

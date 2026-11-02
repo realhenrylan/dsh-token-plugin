@@ -66,7 +66,7 @@ dsh plugin --profile web add github:realhenrylan/dsh-token-plugin
 git clone https://github.com/realhenrylan/dsh-token-plugin.git
 cd dsh-token-plugin
 npm pack
-dsh plugin --profile web add ./dsh-token-plugin-2.0.1.tgz
+dsh plugin --profile web add ./dsh-token-plugin-2.1.0.tgz
 ```
 
 如果已经克隆仓库，可直接在仓库目录中执行后两条命令。安装包文件名中的版本号以 `npm pack` 的输出为准。

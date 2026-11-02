@@ -65,7 +65,7 @@ Clone the GitHub repository, then build a local package and install it through D
 git clone https://github.com/realhenrylan/dsh-token-plugin.git
 cd dsh-token-plugin
 npm pack
-dsh plugin --profile web add ./dsh-token-plugin-2.0.1.tgz
+dsh plugin --profile web add ./dsh-token-plugin-2.1.0.tgz
 ```
 
 If you already have a checkout, run the last two commands from its directory. Use the package filename printed by `npm pack` if the version differs.

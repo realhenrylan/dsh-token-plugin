@@ -140,53 +140,24 @@ const PEAK_CASES = [
   ['2026-08-28T16:30:00Z', '周六 00:30（UTC 还是周五）', false]
 ]
 
-// V4.1 Flash 调价 / 价格依据说明相关的新文案必须同时具备中英双语（英文界面不得残留中文）
-const V41_STRINGS = [
-  'DeepSeek V4.1 Flash 调价将于 ',
-  '（北京时间）生效：deepseek-flash 改用新版峰谷价（空闲 缓存命中 0.02 / 输入 1 / 输出 4 元，高峰为其两倍），deepseek-v4-pro 价格不变。',
-  'DeepSeek V4.1 Flash 调价已生效（自 ',
-  ' 起）：deepseek-flash 按新版峰谷价计费，deepseek-v4-pro 价格不变。',
-  '峰谷价表按生效时间分段：2026-08-17 00:00 起为第一版峰谷价；2026-09-10 12:00 起为 DeepSeek V4.1 Flash 调价后的新版（deepseek-flash 空闲价下调为 缓存命中 0.02 / 输入 1 / 输出 4 元，高峰为其两倍；deepseek-v4-pro 价格不变）。上方「峰谷价」展示的是当前生效的一版，历史调用始终按其发生时刻对应的版本计费。',
-  '旧模型名 deepseek-v4-flash 与 deepseek-v4-flash-vision-exp 仍可调用（官方已将其路由到 DeepSeek-V4.1-Flash、按 Flash 单价计费），在本价格表中与 deepseek-flash 合并为同一档位。'
+// 统一为「模型开发方官方价」口径后新增的说明文案必须同时具备中英双语（英文界面不得残留中文）
+const OFFICIAL_COPY = [
+  '计价口径',
+  '金额按模型开发方的官方 API 公开按量价计算，与调用经过哪个平台无关：DeepSeek 模型使用 DeepSeek 官方人民币峰谷价，其他厂商模型使用其自身官方价。官方目录中没有可靠价格的模型显示「—」，不计作 0。',
+  '消耗表（按模型 · 官方价参考 · 高峰/空闲分列）',
+  '消耗表（按 API 服务商 × 模型 · 官方价参考）',
+  '金额为模型开发方官方 API 按量价的参考金额，与调用经过哪个平台无关；未覆盖的模型显示「—」，不按 ¥0 计。',
+  'PNG 金额为等效官方价参考值，不代表实际平台账单或订阅实付金额。',
+  '订阅套餐中以美元计价的月费按该 USD/CNY 汇率折算成人民币；人民币计价的套餐与官方价金额不受汇率影响。'
 ]
 
-// 官方来源 / 「为什么显示这个价格」说明块
-const OFFICIAL_STRINGS = [
-  'V4.1 调价',
-  ' 2026-09-10 12:00（北京时间）起 deepseek-flash 按新版峰谷价计费（deepseek-v4-pro 不变）',
-  '官方来源与价格依据',
-  '价格由 DeepSeek 官方公布，本插件只做本地计算、不修改也不代理官方价格；点下面的链接可直接核对官方原文。',
-  'DeepSeek 官方价格页（模型与价格、峰谷时段定义）',
-  'DeepSeek V4.1 Flash 发布公告',
-  'DeepSeek 开放平台用量页（官方账单，用于对账）',
-  'DeepSeek 官方 API 文档',
-  'DeepSeek Harness 官方仓库',
-  '为什么显示这个价格？',
-  '① 官方价格表按生效时间分段：2026-08-17 00:00 起为第一版峰谷价；2026-09-10 12:00（北京时间）起为 DeepSeek V4.1 Flash 调价后的新版（deepseek-flash 单价下调，deepseek-v4-pro 不变）。每次调用按其发生时刻对应的版本计费，历史金额不会因后续调价而改变。',
-  '② 模型档位按官方新命名归并：旧名 deepseek-v4-flash、deepseek-v4-flash-vision-exp 仍可调用（官方已路由到 DeepSeek-V4.1-Flash 并按 Flash 单价计费），计费时与 deepseek-flash 合并为同一档位。',
-  '③ 峰谷规则：工作日 9:00–12:00、14:00–18:00（北京时间）为高峰，其余时间（含周末全天）为空闲；空闲价 = 高峰价的一半。',
-  '④ 只有能与记录中 provider / model 可靠匹配的价格才参与计费，其余按 ¥0 统计（避免用相近模型的价格误算）。',
-  '⑤ 本插件按官方公布价格在本地计算，结果仅供参考，最终以 DeepSeek 官方账单为准；产品价格可能变动，请以官方价格页为准。',
-  '建议：若新模型（如 deepseek-flash）的消耗显示为 ¥0，通常是本插件版本过旧——请升级到 1.17.0 或更高版本。'
-]
-
-test('V4.1 Flash price-change copy is translated in both locales', async () => {
+test('official-price copy is translated in both locales', async () => {
   const { exports } = await loadClient()
   const i = exports.__i18n
   i.setLang('zh')
-  for (const s of V41_STRINGS) assert.equal(i.t(s), s, 'zh should echo the key: ' + s.slice(0, 24))
+  for (const s of OFFICIAL_COPY) assert.equal(i.t(s), s, 'zh should echo the key: ' + s.slice(0, 24))
   i.setLang('en')
-  for (const s of V41_STRINGS) assert.notEqual(i.t(s), s, 'missing English translation for: ' + s.slice(0, 24))
-  i.setLang('en')
-})
-
-test('official-source / why-this-price copy is translated in both locales', async () => {
-  const { exports } = await loadClient()
-  const i = exports.__i18n
-  i.setLang('zh')
-  for (const s of OFFICIAL_STRINGS) assert.equal(i.t(s), s, 'zh should echo the key: ' + s.slice(0, 24))
-  i.setLang('en')
-  for (const s of OFFICIAL_STRINGS) assert.notEqual(i.t(s), s, 'missing English translation for: ' + s.slice(0, 24))
+  for (const s of OFFICIAL_COPY) assert.notEqual(i.t(s), s, 'missing English translation for: ' + s.slice(0, 24))
   i.setLang('en')
 })
 
@@ -205,7 +176,7 @@ test('client isPeakNow / periodNow match the official weekend flat-rate rule (is
   }
 })
 
-// 1.18.0 新增的「统计口径声明」与「历史价格与重算」文案同样必须中英双语齐全，
+// 1.18.0 新增的「统计口径声明」与官方价快照重算文案同样必须中英双语齐全，
 // 否则英文界面会残留中文（空字符串翻译也会回退成中文，必须避免）。
 const BILLING_SCOPE_STRINGS = [
   '统计口径：web_search 搜索后端未纳入精确统计',
@@ -213,14 +184,14 @@ const BILLING_SCOPE_STRINGS = [
   ' 次，估算消耗 ≥ ',
   '。搜索在服务端注入检索结果并可能多轮生成，输入与输出都会高于此值，官方账单必然更高。',
   '该部分为估算下限，请以 DeepSeek 官方后台账单为准。',
-  '历史价格提示',
-  '有 ',
-  ' 条记录没有冻结单价（旧版本写入或手工导入），它们的费用按当前价格表计算，改动价格表后会跟着变化；新记录已冻结写入时生效的单价，不受后续改价影响。',
-  '历史价格与重算',
-  ' 条记录没有冻结单价（旧版本写入或手工导入），其费用按当前价格表计算，改动价格后会跟着变化。',
-  '所有记录都已冻结写入时生效的单价：改动价格表只影响之后产生的记录，历史费用不会被改写。',
-  '用当前价格表重算全部历史',
-  '已提交，正在用当前价格表重算全部历史…',
+  '历史记录提示',
+  ' 条无冻结官方价',
+  ' 条记录没有冻结官方价快照（旧版本写入或手工导入），它们的金额按当前官方价格目录重算，目录更新后会跟着变化；新记录已冻结写入时生效的官方价快照，不受后续目录更新影响。',
+  '历史记录与重算',
+  ' 条记录没有冻结官方价快照（旧版本写入或手工导入），其金额按当前官方目录重算，目录更新后会跟着变化。',
+  '所有记录都已冻结写入时生效的官方价快照：官方目录更新只影响之后产生的记录，历史金额不会被改写。',
+  '按当前官方目录重算全部历史',
+  '已提交，正在按当前官方目录重算全部历史…',
   '当前宿主不支持重算'
 ]
 

@@ -2,7 +2,6 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { defaultPricing } from '../lib/index.js'
 
 // 渲染冒烟测试：用最小 React 替身把视图组件的返回树真正走一遍，
 // 用来兜住"语法没错、渲染时才 ReferenceError/TypeError"的情况
@@ -71,12 +70,7 @@ function sampleRecord(over) {
     reasoningTokens: 120,
     finishReason: 'stop',
     interrupted: false,
-    usdCnyRate: 0,
-    fxDate: '',
     modelKey: 'deepseek-flash',
-    baseCost: 0.01,
-    peakValleyCost: 0.02,
-    autoCost: 0.02,
     peak: true,
     official: {
       status: 'priced', amount: 0.02, currency: 'CNY', missing: [], note: '',
@@ -90,9 +84,7 @@ function sampleRecord(over) {
 function sampleDays() {
   return [{
     day: '2026-11-01', calls: 3, miss: 1000, hit: 20000, write: 0, out: 500, reason: 120,
-    peakCalls: 2, offPeakCalls: 1, baseCost: 0.01, peakValleyCost: 0.02, autoCost: 0.02,
-    basePeakCost: 0, baseOffPeakCost: 0, pvPeakCost: 0, pvOffPeakCost: 0,
-    autoPeakCost: 0.02, autoOffPeakCost: 0
+    peakCalls: 2, offPeakCalls: 1
   }]
 }
 
@@ -101,11 +93,10 @@ test('overview view renders without throwing', async () => {
   const out = []
   flatten(__views.OverviewView({
     records: [sampleRecord(), sampleRecord({ recordId: 'r2', provider: 'siliconflow', model: 'deepseek-ai/deepseek-v4-flash', peak: false })],
-    regime: 'auto',
-    toolCalls: [{ provider: 'dsh2shell-x', model: 'fake', autoCost: 0 }],
+    toolCalls: [{ provider: 'dsh2shell-x', model: 'fake' }],
     days: sampleDays(),
     budget: { monthly: 50 },
-    legacyPricingCount: 2
+    legacyOfficialCount: 2
   }), out, 0)
   const text = out.join(' ')
   assert.match(text, /官方价参考金额/)
@@ -121,9 +112,8 @@ test('breakdown view renders both model and provider tables', async () => {
   flatten(__views.BreakdownView({
     records: [
       sampleRecord(),
-      sampleRecord({ recordId: 'r2', provider: 'digitalocean', model: 'deepseek-v4-flash', peak: false, usdCnyRate: 7.1 })
-    ],
-    regime: 'auto'
+      sampleRecord({ recordId: 'r2', provider: 'digitalocean', model: 'deepseek-v4-flash', peak: false })
+    ]
   }), out, 0)
   const text = out.join(' ')
   // 默认按模型：出现模型名与合计行
@@ -135,29 +125,18 @@ test('price view renders without throwing', async () => {
   const { __views } = await loadClient()
   const out = []
   flatten(__views.PriceView({
-    pricing: defaultPricing(),
-    effectiveAt: Date.parse('2026-08-17T00:00:00+08:00'),
-    effectiveV41At: Date.parse('2026-09-10T12:00:00+08:00'),
     fx: { rate: 7.1, inverse: 1 / 7.1, date: '2026-10-31', source: 'Frankfurter', stale: false, error: '' },
     budget: null,
-    legacyPricingCount: 0,
-    pricingHistory: [{ at: Date.parse('2026-10-01T00:00:00Z'), kind: 'edit', label: '手工修改价格表', table: defaultPricing() }],
-    pricingMeta: {
-      sourceUrl: 'https://api-docs.deepseek.com/zh-cn/quick_start/pricing/',
-      checkedAt: '2026-11-01',
-      searchFetch: { pricePer1000: 5, effectiveAt: 0, counted: false },
-      holidayRuleAt: Date.parse('2026-11-01T00:00:00+08:00'),
-      holidays: []
-    },
+    legacyOfficialCount: 0,
     onBudgetChange() {},
     onFxRefresh() {},
     onRepriceAll() {},
     onChanged() {}
   }), out, 0)
   const text = out.join(' ')
-  assert.match(text, /价格来源与快照/)
   assert.match(text, /月度预算/)
-  assert.match(text, /价格口径与第三方价格/)
+  assert.match(text, /历史记录与重算/)
+  assert.match(text, /计价口径/)
 })
 
 test('calendar view renders without throwing', async () => {
@@ -165,7 +144,6 @@ test('calendar view renders without throwing', async () => {
   const out = []
   flatten(__views.CalendarView({
     records: [sampleRecord()],
-    regime: 'auto',
     days: sampleDays()
   }), out, 0)
   const text = out.join(' ')
@@ -175,7 +153,7 @@ test('calendar view renders without throwing', async () => {
 test('cache list view renders without throwing', async () => {
   const { __views } = await loadClient()
   const out = []
-  flatten(__views.CacheListView({ records: [sampleRecord()], regime: 'auto' }), out, 0)
+  flatten(__views.CacheListView({ records: [sampleRecord()] }), out, 0)
   assert.ok(out.length > 0)
 })
 
@@ -210,7 +188,7 @@ test('plan views render channel amounts, manual marking, and the payment caveat'
   const searchRecord = sampleRecord({ recordId: 'search', purpose: 'web-search', origin: 'search-backend' })
   const output = []
   flatten(__views.PriceView({
-    pricing: defaultPricing(), plans: { v: 1, plans: [plan] }, records: records.concat(searchRecord),
+    plans: { v: 1, plans: [plan] }, records: records.concat(searchRecord),
     pricingSources: [], officialModels: {}, budget: null, fx: { rate: 7.1 },
     onPlanSave() { return Promise.resolve({ ok: true }) }, onPlanDelete() { return Promise.resolve({ ok: true }) },
     onPlanReset() { return Promise.resolve({ ok: true }) }, onMarkChannel() { return Promise.resolve({ ok: true, marked: 1 }) }
@@ -243,7 +221,7 @@ test('subscription copy has English translations', async () => {
 test('client asks for a USD/CNY rate only when a plan actually needs it', async () => {
   const { __views } = await loadClient()
   const usd = { v: 1, plans: [{ id: 'p', monthlyFee: 10, currency: 'USD' }] }
-  // 宿主只在有 DigitalOcean 记录时自动拉汇率；有 USD 月费且还没有汇率时才值得补拉
+  // 汇率只服务订阅套餐中以美元计价的月费：有 USD 月费且还没有汇率时才值得补拉
   assert.equal(__views.plansNeedUsdRate({ plans: usd, fx: {} }), true)
   assert.equal(__views.plansNeedUsdRate({ plans: usd, fx: { rate: 6.65 } }), false)
   assert.equal(__views.plansNeedUsdRate({ plans: { v: 1, plans: [{ id: 'p', monthlyFee: 60, currency: 'CNY' }] }, fx: {} }), false)

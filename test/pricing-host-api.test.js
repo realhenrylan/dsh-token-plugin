@@ -214,7 +214,7 @@ test('CSV keeps amount, currency, status, source and frozen marker', async (t) =
   assert.deepEqual(imported.channel, { v: 1, kind: 'plan', planId: 'csv-plan' })
 })
 
-test('repriceAll keeps official snapshots unless explicitly told otherwise', async (t) => {
+test('repriceAll backs up records before recomputing official snapshots', async (t) => {
   const { dir, routes } = await freshPlugin(t)
   await callApi(routes, {
     action: 'import', filename: 'u.json',
@@ -227,24 +227,22 @@ test('repriceAll keeps official snapshots unless explicitly told otherwise', asy
     })
   })
 
-  // 默认重算：不动官方价快照（目录刷新不改写历史的硬保证），但会备份
+  // 重算语义：先备份，再清掉全部官方价快照，让它们按当前官方目录重新计算
   const r1 = await callApi(routes, { action: 'repriceAll' })
   assert.equal(r1.ok, true)
-  assert.equal(r1.officialDropped, 0)
+  assert.equal(r1.officialDropped, 1)
   assert.ok(r1.backup)
   const backups = fs.readdirSync(path.join(dir, 'dsh-usage')).filter((n) => n.startsWith('usage-records.backup-'))
   assert.equal(backups.length, 1)
-  let exp = await callApi(routes, { action: 'export', kind: 'json' })
-  let data = JSON.parse(await fsp.readFile(exp.path, 'utf8'))
-  assert.ok(data.records[0].pricingSnapshot)
-
-  // 显式 includeOfficial 才允许清快照
-  const r2 = await callApi(routes, { action: 'repriceAll', includeOfficial: true })
-  assert.equal(r2.ok, true)
-  assert.equal(r2.officialDropped, 1)
-  exp = await callApi(routes, { action: 'export', kind: 'json' })
-  data = JSON.parse(await fsp.readFile(exp.path, 'utf8'))
+  const exp = await callApi(routes, { action: 'export', kind: 'json' })
+  const data = JSON.parse(await fsp.readFile(exp.path, 'utf8'))
   assert.equal('pricingSnapshot' in data.records[0], false)
+
+  // 清掉快照后仍能按当前官方目录给出可追溯的计价结果（不会退化成 0）
+  const list = await callApi(routes, { action: 'list' })
+  assert.equal(list.ok, true)
+  assert.ok(list.records[0].official)
+  assert.equal(typeof list.records[0].official.status, 'string')
 })
 
 test('list exposes official summary and per-source pricing status', async (t) => {

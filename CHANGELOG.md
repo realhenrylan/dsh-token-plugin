@@ -8,7 +8,7 @@
 
 ---
 
-## 未发布 (Unreleased)
+## v2.1.0 (2026-11-03)
 
 ### 新增 / Added
 
@@ -16,8 +16,14 @@
 - **第三方市场已核验模型别名（scope 限定，不猜）**：Command Code GOAT 模型目录里的 `deepseek/deepseek-v4.1-flash`、`deepseek-v4.1-flash`、`xiaomi/mimo-v2.6-flash`、`z-ai/glm-5.3-flash` 经逐条核验映射到 `deepseek-flash` / `mimo-v2.6-flash` / `glm-5.3-flash` 的官方价目（依据存档见 `docs/source-verification/`），登记为 **scope 限定 `command-code-goat`** 的别名——在哪家核验在哪家生效，不外推到其他平台、不做前缀/模糊匹配；`meta/muse-spark-1.3-contributor`、`inclusionai/ling-3.1-flash-1019:free`、`claude-haiku-5-5` 在核验源中无官方价目，维持「未计价」显形（金额 null）不猜价。属宿主改动，需重启 DSH。
 - **GOAT 国产五家模型别名全量整理进价目目录**：抓取 Command Code GOAT 模型目录端点（`GET https://api.commandcode.ai/provider/v1/models`，95 个模型，原始响应存档 `docs/source-verification/command-code-goat-models.json`），把 deepseek / mimo / qwen / kimi / glm 五家共 **23 个厂商前缀形态**市场 ID 登记为 scope 限定 `command-code-goat` 的别名（如 `deepseek/deepseek-v4-pro`→`deepseek-v4-pro`、`Qwen/Qwen3.8-Max`→`qwen3.8-max`、`moonshotai/Kimi-K3`→`kimi-k3`、`zai-org/GLM-5.3`→`glm-5.3`，连同既有映射共 27 条）。裸名与官方型号名大小写不敏感相等、或已是目录内 scope * 别名的只补前缀形态；目录里没有对应官方条目的市场形态（fast 变体、Omni-Flash、Max-Prime、Max-Preview、Kimi-K2.5、GLM-5.2-Fast 等）与五家核验源无官方价目的模型维持「未计价」显形，不猜价。属宿主改动，需重启 DSH。
 
+### 变更 / Changed
+
+- **计价口径统一为「模型开发方官方 API 价」，删除旧平台价链路**：`autoCost` 这套按「调用经过哪个平台」算的钱（DigitalOcean 美元价 × USD/CNY 汇率、SiliconFlow 平台价表、冻结单价快照）与官方价参考金额长期并存，同一条调用会出现两个金额；PNG 报告与工具调用表还只读旧字段。现在**官方价是唯一金额来源**：DeepSeek 模型的官方价就是 DeepSeek 官方人民币峰谷价，其他厂商模型就是各自的官方价，与调用经过哪个平台无关；官方目录里没有可靠价格的模型显示「—」，不按 ¥0 计。宿主删除 `costFromUnit` / `unitSnapshotOf` / `costFor` / 平台价表 / `dropUnitSnapshots` / `hasDigitalOceanRecords`，记录停写 `unit` / `usdCnyRate` / `fxDate`，投影停返回 `baseCost` / `peakValleyCost` / `autoCost`；前端删除 `costOf` / `splitTotals` / `daySplit`、可编辑价格表与第三方平台价格表，概览、明细、日历、缓存列表、会话排行、PNG 报告、CSV / JSON 导出全部读官方价快照。CSV 删除 `baseCost,peakValleyCost,autoCost` 三列，`list` 新增 `legacyOfficialCount`（没有冻结官方价快照的旧记录条数）。
+- **`repriceAll` 语义变更**：从「只清单价快照、需显式 `includeOfficial` 才清官方快照」改为**先备份、再清空官方价快照、按当前官方目录重算全部历史**（不再需要 `includeOfficial`；「设置 → 历史记录与重算」按钮同步改名与文案）。汇率只保留给订阅套餐中以美元计价的月费折算，人民币计价的套餐与官方价金额不受汇率影响。属宿主 + 前端改动，需重启 DSH 并刷新面板。
+
 ### 修复 / Fixed
 
+- **热更新（HMR）后用量面板接口整体失效**：旧版在 `apply` 里直接 `webServer.register` 注册 `/usage/api` 与 `/usage/api/events`，进程内重新组合（HMR / 手工同步安装副本）时旧路由没有释放，日志报 `webserver: duplicate exact route "/usage/api"`，面板所有请求失败。现在路由交给 `ctx.effect` 托管，卸载或重新组合时先注销旧路由、关闭残留 SSE 连接，同进程热更新可以安全重放。属宿主改动，本次升级需重启 DSH 一次加载新代码；之后的热更新不再需要重启。
 - **纯订阅场景「订阅回本」卡一直显示「—」/「无法换算月费」**：宿主只在存在 DigitalOcean 记录时才自动拉 USD/CNY 汇率（`list` 的省时优化），只用订阅套餐、没有 DO 调用的账号 `fx.rate` 恒为 0，USD 月费折算不出来。现在客户端拿到 `list` 后，若确有「已登记月费 + USD 计价」的套餐而宿主还没有汇率，就自动补拉一次 `fxRefresh` 再刷新（成功后不再请求；失败后 5 分钟内不重试，避免网络异常时反复打请求）。仅改前端，刷新页面即可生效，无需重启 DSH。
 - **回本卡「0 次」看起来像功能坏了**：套餐没登记 Provider ID 时自动归因永远不命中，卡片只写「0 次」没有任何解释。现在这类卡片在次数后直接注明「尚未设置 Provider ID」（与套餐设置区同一词条），说明为什么是 0，而不是假装统计坏了。仅改前端，刷新页面即可生效。
 
