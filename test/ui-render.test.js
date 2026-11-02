@@ -240,6 +240,29 @@ test('subscription copy has English translations', async () => {
   for (const key of keys) assert.notEqual(__i18n.t(key), key, 'missing English text: ' + key)
 })
 
+test('client asks for a USD/CNY rate only when a plan actually needs it', async () => {
+  const { __views } = await loadClient()
+  const usd = { v: 1, plans: [{ id: 'p', monthlyFee: 10, currency: 'USD' }] }
+  // 宿主只在有 DigitalOcean 记录时自动拉汇率；有 USD 月费且还没有汇率时才值得补拉
+  assert.equal(__views.plansNeedUsdRate({ plans: usd, fx: {} }), true)
+  assert.equal(__views.plansNeedUsdRate({ plans: usd, fx: { rate: 6.65 } }), false)
+  assert.equal(__views.plansNeedUsdRate({ plans: { v: 1, plans: [{ id: 'p', monthlyFee: 60, currency: 'CNY' }] }, fx: {} }), false)
+  assert.equal(__views.plansNeedUsdRate({ plans: { v: 1, plans: [{ id: 'p', monthlyFee: 0, currency: 'USD' }] }, fx: {} }), false)
+  assert.equal(__views.plansNeedUsdRate({ plans: { v: 1, plans: [] }, fx: {} }), false)
+  assert.equal(__views.plansNeedUsdRate(null), false)
+})
+
+test('plan ROI card explains a zero count when no provider id is registered', async () => {
+  const { __views } = await loadClient()
+  const plan = { id: 'unbound', name: 'Unbound', currency: 'USD', monthlyFee: 10, cycle: 'month', match: { providers: [], models: [], excludeUnmatched: false } }
+  const out = []
+  flatten(__views.OverviewView({ records: [], plans: { v: 1, plans: [plan] }, fx: { rate: 6.65 }, days: sampleDays(), budget: null }), out, 0)
+  const text = out.join(' ')
+  assert.match(text, /订阅回本 · Unbound/)
+  assert.match(text, /尚未设置 Provider ID/)
+  assert.match(text, /≈ ¥66\.5/)
+})
+
 // 回归：undici v7 的 request() 不再接受 maxRedirections，传了会直接抛
 // "maxRedirections is not supported, use the redirect interceptor"，
 // 导致余额查询、汇率刷新整体失败（1.22.0 线上回归）。
