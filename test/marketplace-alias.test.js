@@ -53,3 +53,20 @@ test('parse 出口的市场别名恰好一条且带核验 scope（seed 生成与
   assert.equal(hits.length, 1, '不重复登记')
   assert.deepEqual(hits[0].scope, ['command-code-goat'])
 })
+
+test('官方型号名大小写不敏感：实抓混合大小写条目同样挂上市场别名（GLM-5.3-Flash 回归）', () => {
+  const adapters = createSourceAdapters()
+  const raw = JSON.parse(readFileSync(new URL('fixtures/pricing/glm.sample.json', import.meta.url), 'utf8'))
+  const entry = raw.models.find((m) => m.officialModelId === 'glm-5.3-flash')
+  assert.ok(entry, 'fixture 含 glm-5.3-flash 条目')
+  // 模拟实抓目录的形态：官方条目名是混合大小写 `GLM-5.3-Flash`（手核样本为小写）。
+  entry.officialModelId = 'GLM-5.3-Flash'
+  entry.aliases = ['glm-5.3-flash']
+  const parsed = adapters.glm.parse({ ok: true, body: JSON.stringify(raw), contentType: 'application/json', statusCode: 200 })
+  assert.equal(parsed.ok, true)
+  const live = parsed.block.models.find((m) => m.officialModelId === 'GLM-5.3-Flash')
+  assert.ok(live, '混合大小写条目保留')
+  const hits = live.aliases.filter((a) => a.id === 'z-ai/glm-5.3-flash')
+  assert.equal(hits.length, 1, '大小写不敏感挂载')
+  assert.deepEqual(hits[0].scope, ['command-code-goat'])
+})
