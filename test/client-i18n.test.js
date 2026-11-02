@@ -2,7 +2,6 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { parseBalanceResponse, getBalanceProvider, missingCredentialError } from '../lib/balance.js'
 
 const here = path.dirname(fileURLToPath(import.meta.url))
 const CLIENT = path.join(here, '..', 'lib', 'client.js')
@@ -35,7 +34,7 @@ async function loadClient(opts) {
 test('exposes an __i18n surface through the ModuleLoader factory', async () => {
   const { exports } = await loadClient()
   assert.equal(typeof exports.__i18n, 'object')
-  for (const k of ['t', 'tb', 'msgText', 'setLang', 'dayLabel', 'fmtMonthLabel', 'dailyStatsTitle', 'weekdayLabels']) {
+  for (const k of ['t', 'msgText', 'setLang', 'dayLabel', 'fmtMonthLabel', 'dailyStatsTitle', 'weekdayLabels']) {
     assert.equal(typeof exports.__i18n[k], 'function', 'hook.' + k)
   }
 })
@@ -129,43 +128,6 @@ test('transient messages render through the current locale', async () => {
   i.setLang('zh')
   assert.equal(validation.errorKey ? i.t(validation.errorKey) : validation.error, '请输入以 dop_v1_ 开头的 DigitalOcean 账户 PAT。')
   i.setLang('en')
-})
-
-test('balance semantic keys resolve in both client locales', async () => {
-  const { exports } = await loadClient()
-  const i = exports.__i18n
-  const samples = [
-    ['deepseek', JSON.stringify({ is_available: true, balance_infos: [{ currency: 'CNY', total_balance: '12.34', granted_balance: '2.34', topped_up_balance: '10.00' }] })],
-    ['siliconflow', JSON.stringify({ code: 20000, data: { balance: '3.25', chargeBalance: '8.75', totalBalance: '12.00' } })],
-    ['digitalocean', JSON.stringify({ account_balance: '-5.25', month_to_date_usage: '3.10', generated_at: '2026-08-22T00:00:00Z' })]
-  ]
-  const keys = new Set()
-  for (const [provider, body] of samples) {
-    const res = parseBalanceResponse(provider, body)
-    assert.equal(res.ok, true)
-    for (const d of res.details || []) { keys.add(d.labelKey); keys.add(d.hintKey) }
-    for (const f of res.fieldDefinitions || []) keys.add(f.meaningKey)
-    if (res.sourceNoteKey) keys.add(res.sourceNoteKey)
-    if (res.balanceLabelKey) keys.add(res.balanceLabelKey)
-  }
-  assert.ok(keys.size >= 5)
-  for (const lang of ['en', 'zh']) {
-    i.setLang(lang)
-    for (const k of keys) assert.notEqual(i.tb(k), k, lang + ' missing translation for ' + k)
-  }
-  i.setLang('en')
-})
-
-test('missing credential cites technical names and never hint keys', () => {
-  const e = missingCredentialError(getBalanceProvider('deepseek'))
-  assert.equal(e.ok, false)
-  assert.equal(e.errorCode, 'missing-credential')
-  assert.match(e.error, /DEEPSEEK_API_KEY/)
-  assert.doesNotMatch(e.error, /hint\./)
-  for (const id of ['siliconflow', 'digitalocean', 'amd-gpu-cloud']) {
-    const err = missingCredentialError(getBalanceProvider(id)).error
-    assert.doesNotMatch(err, /hint\./, id + ' leaked a hint key')
-  }
 })
 
 // 回归用例来自 issue #9：周末（2026-08-23 北京时间 00:00 起）全天按空闲价，

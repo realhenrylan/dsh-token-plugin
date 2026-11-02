@@ -1,0 +1,180 @@
+{
+  "sourceId": "kimi",
+  "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+  "fetchedAt": "2026-11-01T20:53:00+08:00",
+  "ok": true,
+  "models": [
+    {
+      "officialModelId": "kimi-k3.1-pro",
+      "displayName": "Kimi K3.1 Pro",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 1048576,
+      "buckets": {
+        "input": 13.0,
+        "cachedInput": 1.3,
+        "cacheWrite": { "ttl5m": 13.0, "ttl1h": 26.0 },
+        "output": 68.0
+      },
+      "cacheTtl": {
+        "default": "5m",
+        "options": ["5m", "1h"],
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": true,
+        "storageFee": null
+      },
+      "batch": {
+        "supported": true,
+        "input": 7.8,
+        "output": 40.8,
+        "cachedInput": 0.78,
+        "cacheWrite": { "ttl5m": 7.8, "ttl1h": 15.6 }
+      },
+      "effectiveFrom": null,
+      "completeness": "full"
+    },
+    {
+      "officialModelId": "kimi-k3.1-pro-highspeed",
+      "displayName": "Kimi K3.1 Pro 高速版",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 1048576,
+      "buckets": {
+        "input": 26.0,
+        "cachedInput": 1.3,
+        "cacheWrite": { "ttl5m": 26.0, "ttl1h": 52.0 },
+        "output": 136.0
+      },
+      "cacheTtl": {
+        "default": "5m",
+        "options": ["5m", "1h"],
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": true,
+        "storageFee": null
+      },
+      "batch": null,
+      "effectiveFrom": null,
+      "completeness": "full"
+    },
+    {
+      "officialModelId": "kimi-k3",
+      "displayName": "Kimi K3",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 1048576,
+      "buckets": {
+        "input": 20.0,
+        "cachedInput": 2.0,
+        "cacheWrite": { "ttl5m": 20.0, "ttl1h": 40.0 },
+        "output": 100.0
+      },
+      "cacheTtl": {
+        "default": "5m",
+        "options": ["5m", "1h"],
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": true,
+        "storageFee": null
+      },
+      "batch": {
+        "supported": true,
+        "input": 12.0,
+        "output": 60.0,
+        "cachedInput": 1.2,
+        "cacheWrite": { "ttl5m": 12.0, "ttl1h": 24.0 }
+      },
+      "effectiveFrom": null,
+      "completeness": "full"
+    },
+    {
+      "officialModelId": "kimi-k2.7-code",
+      "displayName": "Kimi K2.7 Code",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 262144,
+      "buckets": {
+        "input": 6.5,
+        "cachedInput": 1.3,
+        "cacheWrite": null,
+        "output": 27.0
+      },
+      "cacheTtl": {
+        "default": null,
+        "options": null,
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": null,
+        "storageFee": null,
+        "note": "本次核验未能读取到 K2 系列 TTL 档位的官方明确说明；官方仅明确 K2 系列不支持缓存写入（Cache Write），缓存命中自动续期"
+      },
+      "batch": {
+        "supported": true,
+        "input": 3.9,
+        "output": 16.2,
+        "cachedInput": 0.78,
+        "cacheWrite": null
+      },
+      "effectiveFrom": null,
+      "completeness": "partial"
+    },
+    {
+      "officialModelId": "kimi-k2.7-code-highspeed",
+      "displayName": "Kimi K2.7 Code 高速版",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 262144,
+      "buckets": {
+        "input": 13.0,
+        "cachedInput": 2.6,
+        "cacheWrite": null,
+        "output": 54.0
+      },
+      "cacheTtl": {
+        "default": null,
+        "options": null,
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": null,
+        "storageFee": null,
+        "note": "本次核验未能读取到 K2 系列 TTL 档位的官方明确说明；官方仅明确 K2 系列不支持缓存写入（Cache Write），缓存命中自动续期"
+      },
+      "batch": null,
+      "effectiveFrom": null,
+      "completeness": "partial"
+    },
+    {
+      "officialModelId": "kimi-k2.6",
+      "displayName": "Kimi K2.6",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "contextWindow": 262144,
+      "buckets": {
+        "input": 6.5,
+        "cachedInput": 1.1,
+        "cacheWrite": null,
+        "output": 27.0
+      },
+      "cacheTtl": {
+        "default": null,
+        "options": null,
+        "hitRenewsTtl": true,
+        "ttlLockedAtFirstWrite": null,
+        "storageFee": null,
+        "note": "本次核验未能读取到 K2 系列 TTL 档位的官方明确说明；官方仅明确 K2 系列不支持缓存写入（Cache Write），缓存命中自动续期"
+      },
+      "batch": {
+        "supported": true,
+        "input": 3.9,
+        "output": 16.2,
+        "cachedInput": 0.66,
+        "cacheWrite": null
+      },
+      "effectiveFrom": null,
+      "completeness": "partial"
+    }
+  ],
+  "notes": "样本脱敏：不含任何 API key/token。单价单位为 CNY 元/1 MTok（1 MTok = 1,000,000 tokens）。effectiveFrom 为 null：官方价格表未公布生效日期、也无未来生效价格公告，来源页面 JSON-LD dateModified=2026-10-30T12:10:01.248Z 可作为『截至该日有效』的时效锚点。cacheWrite 为 null 表示官方明确不支持缓存写入（K2 系列），非缺测。cacheTtl.storageFee 为 null 表示官方未公布缓存存储费，不得推断为免费。batch 为 null 表示 Batch API 不支持该型号（批量仅支持 kimi-k3.1-pro / kimi-k3 / kimi-k2.7-code / kimi-k2.6，不含 -highspeed；批量各项费用为标准价 60%，缓存命中为 best-effort 不保证）。K3 系列缓存写入按 TTL（5min/1h）单独计费，命中部分仅收缓存命中价不再收写入费；缓存命中自动续期（免费续期），TTL 首次写入时锁定。已下线型号无现行价格、未列入 models：moonshot-v1 全系（2026-08-31 下线）、kimi-k2 系列（2026-05-25 下线）、kimi-k2.5（2026-08-31 下线）、kimi-latest（2026-01-28 下线）、kimi-thinking-preview（2025-11-11 下线）。K2 系列将于 2026-12 底全部下线（2026-10-31 起对新注册用户停开）。官方无机器可读价格接口（/v1/models 不含价格，OpenAPI 无 pricing 端点），.md 文档镜像不含表格单价，自动抓取需解析网页 HTML/JS payload。海外美元计价本次核验未能读取/解析（来源状态不可用）。"
+}

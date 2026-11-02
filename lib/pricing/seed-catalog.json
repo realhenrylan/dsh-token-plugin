@@ -1,0 +1,3858 @@
+{
+  "catalogVersion": 1,
+  "updatedAt": 1793539275281,
+  "sources": {
+    "deepseek": {
+      "sourceId": "deepseek",
+      "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+      "vendor": "DeepSeek",
+      "status": "ok",
+      "fetchedAt": 1793539275278,
+      "models": [
+        {
+          "sourceId": "deepseek",
+          "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+          "officialModelId": "deepseek-flash",
+          "aliases": [
+            {
+              "id": "deepseek-v4-flash",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "deepseek-v4-flash-vision-exp",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": {
+            "kind": "peak-valley",
+            "timeZone": "Asia/Shanghai",
+            "peakWindows": [
+              [
+                540,
+                720
+              ],
+              [
+                840,
+                1080
+              ]
+            ],
+            "weekendFlatFrom": 0,
+            "holidayFlatFrom": 0,
+            "holidays": {
+              "days": [
+                "2026-01-01",
+                "2026-01-02",
+                "2026-01-03",
+                "2026-02-15",
+                "2026-02-16",
+                "2026-02-17",
+                "2026-02-18",
+                "2026-02-19",
+                "2026-02-20",
+                "2026-02-21",
+                "2026-02-22",
+                "2026-02-23",
+                "2026-04-04",
+                "2026-04-05",
+                "2026-04-06",
+                "2026-05-01",
+                "2026-05-02",
+                "2026-05-03",
+                "2026-05-04",
+                "2026-05-05",
+                "2026-06-19",
+                "2026-06-20",
+                "2026-06-21",
+                "2026-09-25",
+                "2026-09-26",
+                "2026-09-27",
+                "2026-10-01",
+                "2026-10-02",
+                "2026-10-03",
+                "2026-10-04",
+                "2026-10-05",
+                "2026-10-06",
+                "2026-10-07"
+              ],
+              "coveredYears": [
+                2026
+              ],
+              "source": "国务院办公厅《关于 2026 年部分节假日安排的通知》",
+              "calendarPublishedOnVendorSource": false
+            },
+            "crossPeriodSettlement": "unknown"
+          },
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 1,
+                "cacheRead": 0.02,
+                "output": 4
+              },
+              "windows": [
+                {
+                  "id": "offPeak",
+                  "prices": {
+                    "input": 1,
+                    "cacheRead": 0.02,
+                    "output": 4
+                  }
+                },
+                {
+                  "id": "peak",
+                  "prices": {
+                    "input": 2,
+                    "cacheRead": 0.04,
+                    "output": 8
+                  }
+                }
+              ],
+              "validFrom": 1789012800000
+            },
+            {
+              "id": "peakValley20260817",
+              "verified": false,
+              "validFrom": 1786896000000,
+              "validTo": 1789012800000,
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {},
+              "windows": [
+                {
+                  "id": "offPeak",
+                  "prices": {
+                    "cacheRead": 0.05,
+                    "input": 1.5,
+                    "output": 4.5
+                  }
+                },
+                {
+                  "id": "peak",
+                  "prices": {
+                    "cacheRead": 0.1,
+                    "input": 3,
+                    "output": 9
+                  }
+                }
+              ]
+            },
+            {
+              "id": "baseBefore20260817",
+              "verified": false,
+              "validFrom": null,
+              "validTo": 1786896000000,
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": 0.02,
+                "input": 1,
+                "output": 2
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": true,
+            "from": 1789012800000,
+            "to": null
+          },
+          "fetchedAt": 1793537808000,
+          "completeness": "full",
+          "missing": [],
+          "notes": []
+        },
+        {
+          "sourceId": "deepseek",
+          "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+          "officialModelId": "deepseek-v4-pro",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": {
+            "kind": "peak-valley",
+            "timeZone": "Asia/Shanghai",
+            "peakWindows": [
+              [
+                540,
+                720
+              ],
+              [
+                840,
+                1080
+              ]
+            ],
+            "weekendFlatFrom": 0,
+            "holidayFlatFrom": 0,
+            "holidays": {
+              "days": [
+                "2026-01-01",
+                "2026-01-02",
+                "2026-01-03",
+                "2026-02-15",
+                "2026-02-16",
+                "2026-02-17",
+                "2026-02-18",
+                "2026-02-19",
+                "2026-02-20",
+                "2026-02-21",
+                "2026-02-22",
+                "2026-02-23",
+                "2026-04-04",
+                "2026-04-05",
+                "2026-04-06",
+                "2026-05-01",
+                "2026-05-02",
+                "2026-05-03",
+                "2026-05-04",
+                "2026-05-05",
+                "2026-06-19",
+                "2026-06-20",
+                "2026-06-21",
+                "2026-09-25",
+                "2026-09-26",
+                "2026-09-27",
+                "2026-10-01",
+                "2026-10-02",
+                "2026-10-03",
+                "2026-10-04",
+                "2026-10-05",
+                "2026-10-06",
+                "2026-10-07"
+              ],
+              "coveredYears": [
+                2026
+              ],
+              "source": "国务院办公厅《关于 2026 年部分节假日安排的通知》",
+              "calendarPublishedOnVendorSource": false
+            },
+            "crossPeriodSettlement": "unknown"
+          },
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 4.5,
+                "cacheRead": 0.15,
+                "output": 13.5
+              },
+              "windows": [
+                {
+                  "id": "offPeak",
+                  "prices": {
+                    "input": 4.5,
+                    "cacheRead": 0.15,
+                    "output": 13.5
+                  }
+                },
+                {
+                  "id": "peak",
+                  "prices": {
+                    "input": 9,
+                    "cacheRead": 0.3,
+                    "output": 27
+                  }
+                }
+              ],
+              "validFrom": 1789012800000
+            },
+            {
+              "id": "peakValley20260817",
+              "verified": false,
+              "validFrom": 1786896000000,
+              "validTo": 1789012800000,
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {},
+              "windows": [
+                {
+                  "id": "offPeak",
+                  "prices": {
+                    "cacheRead": 0.15,
+                    "input": 4.5,
+                    "output": 13.5
+                  }
+                },
+                {
+                  "id": "peak",
+                  "prices": {
+                    "cacheRead": 0.3,
+                    "input": 9,
+                    "output": 27
+                  }
+                }
+              ]
+            },
+            {
+              "id": "baseBefore20260817",
+              "verified": false,
+              "validFrom": null,
+              "validTo": 1786896000000,
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": 0.025,
+                "input": 3,
+                "output": 6
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": true,
+            "from": 1789012800000,
+            "to": null
+          },
+          "fetchedAt": 1793537808000,
+          "completeness": "full",
+          "missing": [],
+          "notes": []
+        }
+      ],
+      "rules": {
+        "timeZone": "Asia/Shanghai",
+        "offPeakPriceIsHalfOfPeak": true,
+        "peakHours": {
+          "days": "Mon-Fri excluding CN statutory holidays",
+          "windows": [
+            "09:00-12:00",
+            "14:00-18:00"
+          ]
+        },
+        "offPeakHours": "all other hours, including weekends (Sat-Sun) and CN statutory holidays in full",
+        "crossMidnight": "peak windows do not cross midnight; the 18:00-09:00 off-peak block spans midnight; official docs do not state how a request spanning a period boundary is settled (estimation only)",
+        "holidays": {
+          "calendarPublishedOnSource": false,
+          "coverageYears": [],
+          "note": "官方页面不含法定节假日日历；需外部来源（如国务院年度放假安排）并标注覆盖年份"
+        },
+        "perCall": {
+          "search": {
+            "unit": "per_1000_successful_requests",
+            "priceCNY": 5,
+            "effectiveFrom": "2026-11-01T00:00:00+08:00"
+          },
+          "fetch": {
+            "unit": "per_1000_successful_requests",
+            "priceCNY": 5,
+            "effectiveFrom": "2026-11-01T00:00:00+08:00"
+          },
+          "billingOnlyForHttp200WithResults": true
+        },
+        "cacheWriteBucket": null,
+        "reasoningTokenBucket": null,
+        "vision": {
+          "separatePrice": false,
+          "note": "图片按尺寸折算 token 与文本一起计费，每张上限 1024 token；仅 deepseek-flash 支持图像理解"
+        }
+      },
+      "notes": [],
+      "lastSuccessAt": 1793537808000,
+      "lastAttemptAt": 1793537808000,
+      "lastError": "",
+      "priceVersion": "seed:verified:2026-11-01",
+      "seeded": true
+    },
+    "mimo": {
+      "sourceId": "mimo",
+      "sourceUrl": "https://mimo.mi.com/docs/pricing",
+      "vendor": "小米 MiMo",
+      "status": "ok",
+      "fetchedAt": 1793539275278,
+      "models": [
+        {
+          "sourceId": "mimo",
+          "sourceUrl": "https://mimo.mi.com/docs/pricing",
+          "officialModelId": "mimo-v2.6-pro",
+          "aliases": [
+            {
+              "id": "MiMo-V2.6-Pro",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "MiMo V2.6 Pro",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "separate"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": 0,
+                "input": 3,
+                "cacheRead": 0.025,
+                "output": 6
+              },
+              "windows": null,
+              "validFrom": 1779811200000
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": 0,
+                "input": 1.5,
+                "cacheRead": 0.0125,
+                "output": 3
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": true,
+            "from": 1779811200000,
+            "to": null
+          },
+          "fetchedAt": 1793537884000,
+          "completeness": "full",
+          "missing": [],
+          "notes": [
+            "缓存写入限时免费（官方未公布截止日期）"
+          ]
+        },
+        {
+          "sourceId": "mimo",
+          "sourceUrl": "https://mimo.mi.com/docs/pricing",
+          "officialModelId": "mimo-v2.6-flash",
+          "aliases": [
+            {
+              "id": "MiMo-V2.6-Flash",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "MiMo V2.6 Flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "separate"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": 0,
+                "input": 1,
+                "cacheRead": 0.02,
+                "output": 2
+              },
+              "windows": null,
+              "validFrom": 1779811200000
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": 0,
+                "input": 0.5,
+                "cacheRead": 0.01,
+                "output": 1
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": true,
+            "from": 1779811200000,
+            "to": null
+          },
+          "fetchedAt": 1793537884000,
+          "completeness": "full",
+          "missing": [],
+          "notes": [
+            "缓存写入限时免费（官方未公布截止日期）"
+          ]
+        },
+        {
+          "sourceId": "mimo",
+          "sourceUrl": "https://mimo.mi.com/docs/pricing",
+          "officialModelId": "mimo-v2.6-pro-ultraspeed",
+          "aliases": [
+            {
+              "id": "MiMo-V2.6-Pro UltraSpeed",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "MiMo-V2.6-Pro-UltraSpeed",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "mimo-v2.6-pro-ultra-speed",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "separate"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": 0,
+                "input": 30,
+                "cacheRead": 0.25,
+                "output": 60
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537884000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "缓存写入限时免费（官方未公布截止日期）"
+          ]
+        },
+        {
+          "sourceId": "mimo",
+          "sourceUrl": "https://mimo.mi.com/docs/pricing",
+          "officialModelId": "mimo-v2.5-asr",
+          "aliases": [
+            {
+              "id": "MiMo-V2.5-ASR",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_hour_input_audio",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "excluded",
+              "prices": {}
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537884000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "non_token_unit"
+          ],
+          "notes": [
+            "非 token 计价项（per_hour_input_audio），插件无对应用量，未覆盖"
+          ],
+          "pricingExcluded": true,
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "mimo",
+          "sourceUrl": "https://mimo.mi.com/docs/pricing",
+          "officialModelId": "mimo-v2.5-tts",
+          "aliases": [
+            {
+              "id": "MiMo-V2.5-TTS",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0,
+                "cacheRead": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537884000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        }
+      ],
+      "rules": null,
+      "notes": [],
+      "lastSuccessAt": 1793537884000,
+      "lastAttemptAt": 1793537884000,
+      "lastError": "",
+      "priceVersion": "seed:verified:2026-11-01",
+      "seeded": true
+    },
+    "qwen": {
+      "sourceId": "qwen",
+      "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+      "vendor": "千问 Qwen（百炼）",
+      "status": "ok",
+      "fetchedAt": 1793539275279,
+      "models": [
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.6-27b",
+          "aliases": [
+            {
+              "id": "Qwen3.6-27B",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": true,
+            "writeBilledAs": "miss"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 3,
+                "output": 18
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "用量记录型号。非思考/思考输出同价。海外仅见新加坡（国际）价 4.49652/26.97912。第三方平台 siliconflow 的 qwen/qwen3.6-27b（文档写法 Qwen/Qwen3.6-27B）与本型号是否同一版本不可确认，暂不得套用本价格。",
+            "官方未将该型号列入缓存支持列表：缓存命中/写入按普通输入价计"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.8-27b",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 3,
+                "cacheRead": 0.3,
+                "output": 12
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "cachedInput=输入价x10%（官方公布比例推导，非页面直接数字）。免费额度 100 万 Token（仅北京）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.5-27b",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": true,
+            "writeBilledAs": "miss"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128000",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0.6,
+                "output": 4.8
+              },
+              "windows": null
+            },
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 1.8,
+                "output": 14.4
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "官方未将该型号列入缓存支持列表：缓存命中/写入按普通输入价计"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen-max",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": true,
+            "writeBilledAs": "miss"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "tier",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 2.4,
+                "output": 9.6
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "无阶梯计价（maxInputTokens=null 表示官方无阶梯上限）。",
+            "官方未将该型号列入缓存支持列表：缓存命中/写入按普通输入价计"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen-plus",
+          "aliases": [
+            {
+              "id": "qwen-plus-latest",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "qwen-plus-2025-12-01",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128000:standard",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.08,
+                "output": 2
+              },
+              "windows": null,
+              "mode": "standard"
+            },
+            {
+              "id": "128000:thinking",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.08,
+                "output": 8
+              },
+              "windows": null,
+              "mode": "thinking"
+            },
+            {
+              "id": "256000:standard",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2.4,
+                "cacheRead": 0.24,
+                "output": 20
+              },
+              "windows": null,
+              "mode": "standard"
+            },
+            {
+              "id": "256000:thinking",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2.4,
+                "cacheRead": 0.24,
+                "output": 24
+              },
+              "windows": null,
+              "mode": "thinking"
+            },
+            {
+              "id": "1000000:standard",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4.8,
+                "cacheRead": 0.48,
+                "output": 48
+              },
+              "windows": null,
+              "mode": "standard"
+            },
+            {
+              "id": "1000000:thinking",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4.8,
+                "cacheRead": 0.48,
+                "output": 64
+              },
+              "windows": null,
+              "mode": "thinking"
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "cachedInput=输入价x10%（官方比例推导）。qwen-plus、qwen-plus-latest 标「Batch调用半价」；qwen-plus-2025-12-01 同价但未标 Batch。旧快照 qwen-plus-2025-07-14/-2025-04-28 无阶梯 0.8/2/8。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.8-max",
+          "aliases": [
+            {
+              "id": "qwen3.8-max-0902",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 12,
+                "output": 36
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead",
+            "cacheHitUnitPrice"
+          ],
+          "notes": [
+            "免费额度 100 万 Token（仅北京）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.7-max",
+          "aliases": [
+            {
+              "id": "qwen3.7-max-2026-05-20",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "qwen3.7-max-2026-06-08",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 12,
+                "cacheRead": 1.2,
+                "output": 36
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "官方注「当前能力等同于 qwen3.7-max-2026-05-20」，两快照同价。cachedInput=输入价x10%（比例推导）。qwen3.7-max-preview（=qwen3.7-max-2026-05-17）仅思考模式、同价 12/36。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.7-plus",
+          "aliases": [
+            {
+              "id": "qwen3.7-plus-2026-05-26",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.2,
+                "output": 8
+              },
+              "windows": null
+            },
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 6,
+                "cacheRead": 0.6,
+                "output": 24
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "页面价格为原价并标「限时8折」，折后价未公布（不猜测）；tiers 记录原价。cachedInput=输入价x10%（比例推导）。快照 qwen3.7-plus-2026-05-26 同价（无折扣标记）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.6-plus",
+          "aliases": [
+            {
+              "id": "qwen3.6-plus-2026-04-02",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.2,
+                "output": 12
+              },
+              "windows": null
+            },
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 8,
+                "cacheRead": 0.8,
+                "output": 48
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "cachedInput=输入价x10%（比例推导）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.5-plus",
+          "aliases": [
+            {
+              "id": "qwen3.5-plus-2026-02-15",
+              "scope": [
+                "*"
+              ]
+            },
+            {
+              "id": "qwen3.5-plus-2026-04-20",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128000",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.08,
+                "output": 4.8
+              },
+              "windows": null
+            },
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.2,
+                "output": 12
+              },
+              "windows": null
+            },
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4,
+                "cacheRead": 0.4,
+                "output": 24
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "cachedInput=输入价x10%（比例推导）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.8-2.4t-a95b",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 12,
+                "output": 36
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead",
+            "cacheHitUnitPrice"
+          ],
+          "notes": [
+            "免费额度 100 万 Token（仅北京）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.8-flash",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0.8,
+                "output": 2.7
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead",
+            "cacheWriteUnitPrice",
+            "cacheHitUnitPrice"
+          ],
+          "notes": [
+            "免费额度 100 万 Token（仅北京）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen3.7-flash",
+          "aliases": [
+            {
+              "id": "qwen3.7-flash-2026-07-15",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "32000",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.2,
+                "cacheRead": 0.02,
+                "output": 0.8
+              },
+              "windows": null
+            },
+            {
+              "id": "256000",
+              "maxInputTokens": 256000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.6,
+                "cacheRead": 0.06,
+                "output": 2.4
+              },
+              "windows": null
+            },
+            {
+              "id": "1000000",
+              "maxInputTokens": 1000000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 1.2,
+                "cacheRead": 0.12,
+                "output": 4.8
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "cachedInput=输入价x10%（比例推导）。免费额度 100 万 Token（仅北京，主 ID；日期快照无）。"
+          ]
+        },
+        {
+          "sourceId": "qwen",
+          "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+          "officialModelId": "qwen-turbo",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn-beijing",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {},
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537640000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "tiers",
+            "thinking",
+            "cache"
+          ],
+          "notes": [
+            "来源不可用：当前官方价格页未列出文本模型 qwen-turbo（仅 qwen-audio-turbo「目前仅供免费体验」与 qwen-doc-turbo 0.6/1 元/百万Token）。不猜测单价。"
+          ]
+        }
+      ],
+      "rules": null,
+      "notes": [],
+      "lastSuccessAt": 1793537640000,
+      "lastAttemptAt": 1793537640000,
+      "lastError": "",
+      "priceVersion": "seed:verified:2026-11-01",
+      "seeded": true
+    },
+    "kimi": {
+      "sourceId": "kimi",
+      "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+      "vendor": "Kimi（月之暗面）",
+      "status": "ok",
+      "fetchedAt": 1793539275280,
+      "models": [
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k3.1-pro",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown",
+            "writeTtlDefault": "ttl5m"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 13,
+                "cacheRead": 1.3,
+                "cacheWrite": {
+                  "ttl5m": 13,
+                  "ttl1h": 26
+                },
+                "output": 68
+              },
+              "windows": null
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 7.8,
+                "cacheRead": 0.78,
+                "cacheWrite": {
+                  "ttl5m": 7.8,
+                  "ttl1h": 15.6
+                },
+                "output": 40.8
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k3.1-pro-highspeed",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown",
+            "writeTtlDefault": "ttl5m"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 26,
+                "cacheRead": 1.3,
+                "cacheWrite": {
+                  "ttl5m": 26,
+                  "ttl1h": 52
+                },
+                "output": 136
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k3",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown",
+            "writeTtlDefault": "ttl5m"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 20,
+                "cacheRead": 2,
+                "cacheWrite": {
+                  "ttl5m": 20,
+                  "ttl1h": 40
+                },
+                "output": 100
+              },
+              "windows": null
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": 12,
+                "cacheRead": 1.2,
+                "cacheWrite": {
+                  "ttl5m": 12,
+                  "ttl1h": 24
+                },
+                "output": 60
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k2.7-code",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 6.5,
+                "cacheRead": 1.3,
+                "output": 27
+              },
+              "windows": null
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 3.9,
+                "cacheRead": 0.78,
+                "output": 16.2
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k2.7-code-highspeed",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 13,
+                "cacheRead": 2.6,
+                "output": 54
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "kimi",
+          "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
+          "officialModelId": "kimi-k2.6",
+          "aliases": [],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "standard",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 6.5,
+                "cacheRead": 1.1,
+                "output": 27
+              },
+              "windows": null
+            },
+            {
+              "id": "batch",
+              "mode": "batch",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 3.9,
+                "cacheRead": 0.66,
+                "output": 16.2
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537580000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        }
+      ],
+      "rules": null,
+      "notes": [],
+      "lastSuccessAt": 1793537580000,
+      "lastAttemptAt": 1793537580000,
+      "lastError": "",
+      "priceVersion": "seed:verified:2026-11-01",
+      "seeded": true
+    },
+    "glm": {
+      "sourceId": "glm",
+      "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+      "vendor": "智谱 GLM",
+      "status": "ok",
+      "fetchedAt": 1793539275281,
+      "models": [
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-5.3",
+          "aliases": [
+            {
+              "id": "GLM-5.3",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 8,
+                "cacheRead": 2,
+                "output": 28
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-5.3-flash",
+          "aliases": [
+            {
+              "id": "GLM-5.3-Flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.23,
+                "output": 2.8
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-5.3-flashx",
+          "aliases": [
+            {
+              "id": "GLM-5.3-FlashX",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.57,
+                "output": 7
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-5.3-flashx-legal",
+          "aliases": [
+            {
+              "id": "GLM-5.3-FlashX-Legal",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.57,
+                "output": 7
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-5.2",
+          "aliases": [
+            {
+              "id": "GLM-5.2",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 8,
+                "cacheRead": 2,
+                "output": 28
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-5.1",
+          "aliases": [
+            {
+              "id": "glm-5.1",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 6,
+                "cacheRead": 1.3,
+                "output": 24
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 ≥32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 8,
+                "cacheRead": 2,
+                "output": 28
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-5-Turbo",
+          "aliases": [
+            {
+              "id": "glm-5-turbo",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 5,
+                "cacheRead": 1.2,
+                "output": 22
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 ≥32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 7,
+                "cacheRead": 1.8,
+                "output": 26
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-5",
+          "aliases": [
+            {
+              "id": "glm-5",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4,
+                "cacheRead": 1,
+                "output": 18
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 ≥32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 6,
+                "cacheRead": 1.5,
+                "output": 22
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-4.7",
+          "aliases": [
+            {
+              "id": "GLM-4.7",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入 [0, 32K)，输出 [0, 0.2K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": 200,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.4,
+                "output": 8
+              },
+              "windows": null
+            },
+            {
+              "id": "输入 [0, 32K)，输出 ≥0.2K",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 3,
+                "cacheRead": 0.6,
+                "output": 14
+              },
+              "windows": null
+            },
+            {
+              "id": "输入 [32K, 200K)",
+              "maxInputTokens": 200000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4,
+                "cacheRead": 0.8,
+                "output": 16
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.5-Air",
+          "aliases": [
+            {
+              "id": "glm-4.5-air",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入 [0, 32K)，输出 [0, 0.2K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": 200,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.16,
+                "output": 2
+              },
+              "windows": null
+            },
+            {
+              "id": "输入 [0, 32K)，输出 ≥0.2K",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.8,
+                "cacheRead": 0.16,
+                "output": 6
+              },
+              "windows": null
+            },
+            {
+              "id": "输入 [32K, 128K)",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 1.2,
+                "cacheRead": 0.24,
+                "output": 8
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.7-FlashX",
+          "aliases": [
+            {
+              "id": "glm-4.7-flashx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "200K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.5,
+                "cacheRead": 0.1,
+                "output": 3
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.7-Flash",
+          "aliases": [
+            {
+              "id": "glm-4.7-flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "200K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0,
+                "cacheRead": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "官方标价『免费』（输入/输出/缓存命中均为免费），0 表示官方明确免费"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "glm-4-plus",
+          "aliases": [
+            {
+              "id": "GLM-4-Plus",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 5,
+                "cacheRead": 2.5,
+                "output": 5
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-Air-250414",
+          "aliases": [
+            {
+              "id": "glm-4-air-250414",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.5,
+                "cacheRead": 0.25,
+                "output": 0.5
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-AirX",
+          "aliases": [
+            {
+              "id": "glm-4-airx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "8K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 10,
+                "output": 10
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』，cachedInput=null 表示不支持缓存计价（非免费）"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-Long",
+          "aliases": [
+            {
+              "id": "glm-4-long",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "1M",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 1,
+                "cacheRead": 0.5,
+                "output": 1
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-Assistant",
+          "aliases": [
+            {
+              "id": "glm-4-assistant",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 5,
+                "output": 5
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-Z1-Air",
+          "aliases": [
+            {
+              "id": "glm-z1-air",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0.5,
+                "output": 0.5
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-Z1-AirX",
+          "aliases": [
+            {
+              "id": "glm-z1-airx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 5,
+                "output": 5
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-Z1-FlashX",
+          "aliases": [
+            {
+              "id": "glm-z1-flashx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0.1,
+                "output": 0.1
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-FlashX-250414",
+          "aliases": [
+            {
+              "id": "glm-4-flashx-250414",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.1,
+                "cacheRead": 0.05,
+                "output": 0.1
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-Flash-250414",
+          "aliases": [
+            {
+              "id": "glm-4-flash-250414",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-Z1-Flash",
+          "aliases": [
+            {
+              "id": "glm-z1-flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-OCR",
+          "aliases": [
+            {
+              "id": "glm-ocr",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0.2,
+                "output": 0.2
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-5V-Turbo",
+          "aliases": [
+            {
+              "id": "glm-5v-turbo",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 5,
+                "cacheRead": 1.2,
+                "output": 22
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 ≥32K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 7,
+                "cacheRead": 1.8,
+                "output": 26
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.6V",
+          "aliases": [
+            {
+              "id": "glm-4.6v",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 1,
+                "cacheRead": 0.2,
+                "output": 3
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 [32K, 128K)",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.4,
+                "output": 6
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.6V-FlashX",
+          "aliases": [
+            {
+              "id": "glm-4.6v-flashx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.15,
+                "cacheRead": 0.03,
+                "output": 1.5
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 [32K, 128K)",
+              "maxInputTokens": 128000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0.3,
+                "cacheRead": 0.03,
+                "output": 3
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.6V-Flash",
+          "aliases": [
+            {
+              "id": "glm-4.6v-flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "—",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 0,
+                "cacheRead": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date"
+          ],
+          "notes": [
+            "官方标价『免费』（0 为官方明确免费，含缓存命中）"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.5V",
+          "aliases": [
+            {
+              "id": "glm-4.5v",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入长度 [0, 32K)",
+              "maxInputTokens": 32000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 2,
+                "cacheRead": 0.4,
+                "output": 6
+              },
+              "windows": null
+            },
+            {
+              "id": "输入长度 [32K, 64K)",
+              "maxInputTokens": 64000,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4,
+                "cacheRead": 0.8,
+                "output": 12
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4V-Plus-0111",
+          "aliases": [
+            {
+              "id": "glm-4v-plus-0111",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "16K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheWrite": null,
+                "input": 4,
+                "cacheRead": 2,
+                "output": 4
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence"
+          ],
+          "notes": []
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4V-Flash",
+          "aliases": [
+            {
+              "id": "glm-4v-flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "4K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead"
+          ],
+          "notes": [
+            "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.1V-Thinking-FlashX",
+          "aliases": [
+            {
+              "id": "glm-4.1v-thinking-flashx",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "64K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 2,
+                "output": 2
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "official_model_id_evidence",
+            "cacheRead"
+          ],
+          "notes": [
+            "缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4.1V-Thinking-Flash",
+          "aliases": [
+            {
+              "id": "glm-4.1v-thinking-flash",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "64K",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 0,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "cacheRead"
+          ],
+          "notes": [
+            "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+          ]
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-ASR-2512",
+          "aliases": [
+            {
+              "id": "glm-asr-2512",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "输入：16 元/百万 Tokens（约 0.0002 元/秒）；输出：不计费",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "cacheRead": null,
+                "cacheWrite": null,
+                "input": 16,
+                "output": 0
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "cacheRead"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "语音识别：输出不计费（0 为官方明确不计费）；官方同时给出约 0.0002 元/秒的音频折算参考"
+          ],
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "GLM-4-Voice",
+          "aliases": [
+            {
+              "id": "glm-4-voice",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "80 元/百万 Tokens",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": null,
+                "cacheRead": null,
+                "cacheWrite": null,
+                "output": null
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "official_model_id_evidence",
+            "input",
+            "cacheRead",
+            "output"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "官方仅给单一单价 80 元/百万 Tokens，未区分输入/输出桶；buckets 置 null 表示分桶语义不明，自动计价前需官方澄清"
+          ],
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "Embedding-3",
+          "aliases": [
+            {
+              "id": "embedding-3",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "8K，单价 0.5；Batch API 0.25",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": null,
+                "cacheRead": null,
+                "cacheWrite": null,
+                "output": null
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "input",
+            "cacheRead",
+            "output"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "向量模型仅给单一单价，未区分输入/输出桶"
+          ],
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "embedding-2",
+          "aliases": [
+            {
+              "id": "Embedding-2",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "8K，单价 0.5；Batch API 0.25",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": null,
+                "cacheRead": null,
+                "cacheWrite": null,
+                "output": null
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "input",
+            "cacheRead",
+            "output"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "向量模型仅给单一单价，未区分输入/输出桶"
+          ],
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "CodeGeeX-4",
+          "aliases": [
+            {
+              "id": "codegeex-4",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "128K，单价 0.1",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": null,
+                "cacheRead": null,
+                "cacheWrite": null,
+                "output": null
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "official_model_id_evidence",
+            "input",
+            "cacheRead",
+            "output"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "仅给单一单价，未区分输入/输出桶；Batch API 价未标注"
+          ],
+          "bucketSemantics": "unsplit"
+        },
+        {
+          "sourceId": "glm",
+          "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+          "officialModelId": "Rerank",
+          "aliases": [
+            {
+              "id": "rerank",
+              "scope": [
+                "*"
+              ]
+            }
+          ],
+          "currency": "CNY",
+          "unit": "per_1m_tokens",
+          "region": "cn",
+          "cache": {
+            "readFallbackToInput": false,
+            "writeBilledAs": "unknown"
+          },
+          "periods": null,
+          "tiers": [
+            {
+              "id": "4K，单价 0.8",
+              "maxInputTokens": null,
+              "maxOutputTokens": null,
+              "prices": {
+                "input": null,
+                "cacheRead": null,
+                "cacheWrite": null,
+                "output": null
+              },
+              "windows": null
+            }
+          ],
+          "effective": {
+            "known": false,
+            "from": null,
+            "to": null
+          },
+          "fetchedAt": 1793537916000,
+          "completeness": "partial",
+          "missing": [
+            "effective_date",
+            "bucket_semantics",
+            "official_model_id_evidence",
+            "input",
+            "cacheRead",
+            "output"
+          ],
+          "notes": [
+            "官方单价未区分输入/输出桶或按音频时长计价，分桶语义不明确，不自动计价",
+            "重排序模型仅给单一单价，未区分输入/输出桶；Batch API 价未标注"
+          ],
+          "bucketSemantics": "unsplit"
+        }
+      ],
+      "rules": null,
+      "notes": [],
+      "lastSuccessAt": 1793537916000,
+      "lastAttemptAt": 1793537916000,
+      "lastError": "",
+      "priceVersion": "seed:verified:2026-11-01",
+      "seeded": true
+    }
+  }
+}

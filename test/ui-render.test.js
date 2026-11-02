@@ -77,7 +77,12 @@ function sampleRecord(over) {
     baseCost: 0.01,
     peakValleyCost: 0.02,
     autoCost: 0.02,
-    peak: true
+    peak: true,
+    official: {
+      status: 'priced', amount: 0.02, currency: 'CNY', missing: [], note: '',
+      partial: false, estimated: false, stale: false, sourceId: 'deepseek',
+      officialModelId: 'deepseek-flash', basis: 'official-id', frozen: true
+    }
   }
   return Object.assign(base, over || {})
 }
@@ -103,7 +108,7 @@ test('overview view renders without throwing', async () => {
     legacyPricingCount: 2
   }), out, 0)
   const text = out.join(' ')
-  assert.match(text, /总消耗/)
+  assert.match(text, /官方价参考金额/)
   assert.match(text, /调用次数/)
   assert.match(text, /统计口径提示/)
   // 明细表格已移到「明细」页签，概览只保留趋势与结论

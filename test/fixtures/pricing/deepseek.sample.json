@@ -1,0 +1,131 @@
+{
+  "sourceId": "deepseek",
+  "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+  "sourceUrls": [
+    "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
+    "https://api-docs.deepseek.com/zh-cn/quick_start/pricing.md",
+    "https://api-docs.deepseek.com/quick_start/pricing/",
+    "https://api-docs.deepseek.com/quick_start/pricing.md",
+    "https://api-docs.deepseek.com/zh-cn/guides/search.md",
+    "https://api-docs.deepseek.com/zh-cn/quick_start/token_usage.md",
+    "https://api-docs.deepseek.com/zh-cn/guides/thinking_mode.md",
+    "https://api-docs.deepseek.com/zh-cn/guides/vision.md",
+    "https://api-docs.deepseek.com/zh-cn/updates.md",
+    "https://api-docs.deepseek.com/zh-cn/news/news260813.md",
+    "https://api-docs.deepseek.com/zh-cn/news/news260910.md",
+    "https://api-docs.deepseek.com/zh-cn/news/news261017.md"
+  ],
+  "machineReadableUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing.md",
+  "fetchedAt": "2026-11-01T20:56:48+08:00",
+  "fetchMethod": "https_get",
+  "ok": true,
+  "currency": "CNY",
+  "unit": "per_1m_tokens",
+  "models": [
+    {
+      "officialModelId": "deepseek-flash",
+      "modelVersion": "DeepSeek-V4.1-Flash-1017",
+      "aliases": [
+        {
+          "modelId": "deepseek-v4-flash",
+          "status": "retired_alias_still_callable",
+          "servedBy": "DeepSeek-V4.1-Flash-1017",
+          "billedAs": "deepseek-flash"
+        },
+        {
+          "modelId": "deepseek-v4-flash-vision-exp",
+          "status": "retired_alias_still_callable",
+          "servedBy": "DeepSeek-V4.1-Flash-1017",
+          "billedAs": "deepseek-flash"
+        }
+      ],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "buckets": {
+        "cacheHit": { "offPeak": 0.02, "peak": 0.04 },
+        "cacheMiss": { "offPeak": 1.0, "peak": 2.0 },
+        "output": { "offPeak": 4.0, "peak": 8.0 }
+      },
+      "periods": [
+        {
+          "name": "peakValleyV41",
+          "effectiveFrom": "2026-09-10T12:00:00+08:00",
+          "effectiveTo": null,
+          "effectiveFromSource": "https://api-docs.deepseek.com/zh-cn/news/news260910.md",
+          "note": "官方 2026-09-10 12:00 调价公告起生效；2026-10-17 模型升级至 DeepSeek-V4.1-Flash-1017，官方声明价格保持不变"
+        }
+      ],
+      "effectiveFrom": "2026-09-10T12:00:00+08:00",
+      "effectiveTo": null,
+      "completeness": "full"
+    },
+    {
+      "officialModelId": "deepseek-v4-pro",
+      "modelVersion": "DeepSeek-V4-Pro-0813",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "buckets": {
+        "cacheHit": { "offPeak": 0.15, "peak": 0.30 },
+        "cacheMiss": { "offPeak": 4.5, "peak": 9.0 },
+        "output": { "offPeak": 13.5, "peak": 27.0 }
+      },
+      "periods": [
+        {
+          "name": "peakValleyV41",
+          "effectiveFrom": "2026-09-10T12:00:00+08:00",
+          "effectiveTo": null,
+          "effectiveFromSource": "https://api-docs.deepseek.com/zh-cn/news/news260910.md",
+          "note": "现行价自 2026-09-10 12:00 调价公告后必然有效；是否自 2026-08-17 第一版峰谷价起未变无法从官方文本核验（该版价格仅存于公告配图）"
+        }
+      ],
+      "effectiveFrom": "2026-09-10T12:00:00+08:00",
+      "effectiveTo": null,
+      "completeness": "full"
+    }
+  ],
+  "rules": {
+    "timeZone": "Asia/Shanghai",
+    "offPeakPriceIsHalfOfPeak": true,
+    "peakHours": {
+      "days": "Mon-Fri excluding CN statutory holidays",
+      "windows": ["09:00-12:00", "14:00-18:00"]
+    },
+    "offPeakHours": "all other hours, including weekends (Sat-Sun) and CN statutory holidays in full",
+    "crossMidnight": "peak windows do not cross midnight; the 18:00-09:00 off-peak block spans midnight; official docs do not state how a request spanning a period boundary is settled (estimation only)",
+    "holidays": {
+      "calendarPublishedOnSource": false,
+      "coverageYears": [],
+      "note": "官方页面不含法定节假日日历；需外部来源（如国务院年度放假安排）并标注覆盖年份"
+    },
+    "perCall": {
+      "search": {
+        "unit": "per_1000_successful_requests",
+        "priceCNY": 5,
+        "effectiveFrom": "2026-11-01T00:00:00+08:00"
+      },
+      "fetch": {
+        "unit": "per_1000_successful_requests",
+        "priceCNY": 5,
+        "effectiveFrom": "2026-11-01T00:00:00+08:00"
+      },
+      "billingOnlyForHttp200WithResults": true
+    },
+    "cacheWriteBucket": null,
+    "reasoningTokenBucket": null,
+    "vision": {
+      "separatePrice": false,
+      "note": "图片按尺寸折算 token 与文本一起计费，每张上限 1024 token；仅 deepseek-flash 支持图像理解"
+    }
+  },
+  "knownGaps": [
+    "2026-08-17 前 base 价与 2026-08-17~2026-09-10 第一版峰谷价：官方仅公告配图，无文本数值，不可核验",
+    "周末/节假日全天空闲规则的分段生效日期（历史）官方现行文本未标注",
+    "法定节假日日历与覆盖年份官方不提供",
+    "跨高峰/空闲时段请求的结算时点官方未说明",
+    "推理 token 是否全部并入输出桶官方未明示",
+    "音频、视频、缓存写入/存储、批量折扣：官方无此类计价",
+    "英文站（USD）价格为独立标价（非汇率换算），本样本仅收录 CNY；USD 对照见 docs/source-verification/deepseek.zh-CN.md"
+  ],
+  "notes": "DeepSeek 官方 API 公开价目核验样本（脱敏，仅公开价格信息）。数值全部取自 fetchedAt 时刻实际读取的官方页面；计费桶仅 cacheHit/cacheMiss/output 三类，无缓存写入与推理 token 独立桶。空闲价为高峰价的一半。deepseek-v4-pro 在 news260910.md 中曾计划 2026-09-14 12:00 起路由到 V4.1 Flash 并按 Flash 价计费，但 updates.md 随后声明继续提供 V4 Pro 且计费不变，现行价格页单列 V4 Pro 价格，故以现行价格页为准。"
+}

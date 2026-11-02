@@ -31,9 +31,14 @@ test('record projection and aggregation are memoized', () => {
   assert.match(host, /projectionCache\.get\(r\)/, 'host must cache per-record projection')
 })
 
-test('the balance/FX path never spawns a node subprocess on the happy path', () => {
+test('the FX path never spawns a node subprocess on the happy path', () => {
   const host = read('index.js')
   // 子进程只允许作为 undici 不可用时的兜底存在
   const calls = host.match(/await spawnNode\(/g) || []
   assert.ok(calls.length <= 2, 'spawnNode should only remain as a fallback (found ' + calls.length + ')')
+})
+
+test('balance query is not registered or exposed', () => {
+  assert.doesNotMatch(read('client.js'), /id: \"balance(?:-view)?\"/)
+  assert.doesNotMatch(read('index.js'), /case '(?:balance|balanceProviders|balanceCredentialStatus|saveBalanceCredential)':/)
 })

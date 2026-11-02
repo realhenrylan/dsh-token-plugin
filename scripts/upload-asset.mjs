@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process'
 import https from 'node:https'
 import fs from 'node:fs'
 
-const REPO = 'feiyang-dev/dsh-usage-plugin'
+const REPO = 'realhenrylan/dsh-token-plugin'
 const RELEASE_ID = 375098880
 
 function getCredential() {

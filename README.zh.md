@@ -1,13 +1,15 @@
+> 已发布到 npm，包名为 `dsh-token-plugin`。
+
 <div align="center">
 
 # DeepSeek Harness 用量与消耗插件（dsh-usage-plugin）
 
 [English](./README.md) | **简体中文**
 
-[GitHub](https://github.com/feiyang-dev/dsh-usage-plugin) · [npm](https://www.npmjs.com/package/@feiyang666/dsh-usage-plugin) · MIT License
+[GitHub](https://github.com/realhenrylan/dsh-token-plugin) · MIT License
 
 
-**由开发者制作的 DeepSeek Harness 插件** —— 记录每一次模型调用的 token 用量与消耗，支持峰谷计费、余额查询、日历热力图与 CSV / JSON / PNG 导出。
+**由开发者制作的 DeepSeek Harness 插件** —— 记录每一次模型调用的 token 用量与消耗，支持峰谷计费、日历热力图与 CSV / JSON / PNG 导出。
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D18-339933)
@@ -17,21 +19,12 @@
 
 ---
 
-> ## 🔔 重要通知（2026-08-16）：npm 包名已更换
->
-> 本插件的 **npm 包名已由 `@feiyang666/deepseekharnessdesktop` 更名为 `@feiyang666/dsh-usage-plugin`**（与 GitHub 仓库名 `feiyang-dev/dsh-usage-plugin` 保持一致）。
->
-> - 安装 / 升级请使用新包名：`dsh plugin --profile web add @feiyang666/dsh-usage-plugin`
-> - 旧包名 `@feiyang666/deepseekharnessdesktop` 仍会保留一段时间，但**不再维护、不会更新**，请尽快迁移
-> - 桌面端（[`DeepSeek Harness 桌面版`](https://github.com/feiyang-dev/DeepSeek-Harness-Desktop)）已兼容两种包名，旧包名安装的会自动识别并支持「一键更新」迁移到新包名
-
----
 
 ## 简介
 
-dsh-usage-plugin 是 DeepSeek Harness 生态的**用量与消耗统计插件**（DSH plugin，Host + Client 双面一体包）。装好后在 WebUI 顶部「对话」「轨迹」之后会出现 **「用量与消耗」** 与 **「剩余余额查询」** 两个 tab：
+dsh-usage-plugin 是 DeepSeek Harness 生态的**用量与消耗统计插件**（DSH plugin，Host + Client 双面一体包）。装好后在 WebUI 顶部「对话」「轨迹」之后会出现 **「用量与消耗」** tab：
 
-> 支持 **Windows / macOS / Linux**：路径按当前平台处理（`node:path`），目录选择与「打开所在目录」均调用系统原生方式（macOS 用 `osascript` / `open`，Linux 用 `zenity` / `xdg-open`），余额查询与导出不依赖 Windows 专用命令。
+> 支持 **Windows / macOS / Linux**：路径按当前平台处理（`node:path`），目录选择与「打开所在目录」均调用系统原生方式（macOS 用 `osascript` / `open`，Linux 用 `zenity` / `xdg-open`），导出不依赖 Windows 专用命令。
 
 - **用量与消耗**：记录每次模型调用的 token 用量与缓存命中（输入·未命中 / 缓存命中 / 缓存写入 / 输出 / 推理 / 结束原因），按 DeepSeek 峰谷/基础价格计算消耗（工作日高峰时段按北京时间 9:00–12:00、14:00–18:00 计价；自 2026-08-23 起周末全天按空闲价计费；自 2026-09-10 12:00（北京时间）起改用 V4.1 Flash 调价后的峰谷价——`deepseek-flash` 空闲价 缓存命中 0.02 / 输入 1 / 输出 4 元，高峰为其两倍）。模型名以请求参数为准如实显示（非 DeepSeek 模型不再显示为「未知模型」，无官方价格的模型消耗按 0 统计）。概览含「按模型」表与「按 API 服务商 × 模型」明细表（每个服务商一组，组内列出各模型的调用与高峰/空闲分列消耗），底部有总费用合计。概览还支持**日期筛选**（今天 / 近 7 天 / 近 30 天 / 全部，外加自定义起止区间），可将聚合统计限定到任意一天或日期范围。
 - **用量日历**：按月查看每日用量热力图（按消耗或调用数着色），悬停查看详情（含高峰 / 空闲消耗拆分）、点击某天查看当日调用明细与高峰/空闲消耗统计，附每日统计表（高峰消耗 / 空闲消耗 / 总消耗分列）与汇总。支持**日期范围筛选**（今天 / 近7天 / 近30天 / 全部 + 自定义起止日期）：筛选激活时每日统计表跨月显示范围内所有天、顶部卡片切换为「范围内调用 / 范围内消耗」并按范围汇总、热力图仅对范围内日期着色。
@@ -39,13 +32,11 @@ dsh-usage-plugin 是 DeepSeek Harness 生态的**用量与消耗统计插件**�
 - **中断调用如实呈现**：被中止 / 出错 / 超时（如手动停止生成、流中断）的调用在面板中标红显示「中断」徽标、结束原因（已中断 / 错误 / 超时）与消耗 `—`。这类调用官方后台仍会计入「API 请求次数」并按实际 token 计费，但 harness 不向插件上报 usage——插件按 0 token 记录它们，**调用次数与官方口径一致，消耗不受影响**；概览「调用次数」卡片会提示 `中断 N（未计费）`。
 - **本地统计 vs 官方后台的差异提示**：用量面板顶部固定显示说明横幅——本面板统计的是插件本地捕获的调用（官方价格 + 峰谷时段），与官方后台（platform.deepseek.com 用量页）相比金额可能更低：① 中断/出错/超时的调用官方仍按实际 token 计费而插件按 0 记录；② 账号下其他 API Key（其它应用/脚本）的调用不经过 DeepSeek Harness，官方包含而插件不包含；③ 精确对账可导出官方月度账单 CSV 对比。检测到中断调用时，横幅额外以红字显示「当前记录中有 N 次中断调用（未计费）」。
 - **价格表**：**DeepSeek 官方 API 价格表**（覆盖官方模型 `deepseek-flash`（DeepSeek-V4.1-Flash）与 `deepseek-v4-pro`；旧名 `deepseek-v4-flash` / `deepseek-v4-flash-vision-exp` 仍可调用并并入 Flash 档位），展示基础价与峰谷价（高峰/空闲）单价表，高峰价与空闲价分列展示。峰谷价表按官方调价**分段**：2026-08-17 起为第一版峰谷价；**2026-09-10 12:00（北京时间）起为 V4.1 Flash 调价后的新版**（`deepseek-flash` 空闲价下调为 缓存命中 0.02 / 输入 1 / 输出 4 元，高峰为其两倍；`deepseek-v4-pro` 不变），历史调用始终按其发生时刻对应的版本计费。支持在面板内直接编辑价格并持久化（数据目录 `pricing.json`），也可一键恢复默认。
-- **剩余余额查询**：用当前配置的 `DEEPSEEK_API_KEY` 查询 DeepSeek 账户余额；并支持 **百炼 Token Plan 配额查询**（复用 `bl auth login --console` 的控制台 OAuth token，无需阿里云 AccessKey，展示本周配额已用百分比与重置时间）。
 - **导出**：CSV / JSON / **PNG 长图**（按最新在前展示，最多含最近 2000 条，超出会提示；PNG 报告含高峰 / 空闲消耗分列统计），可导出到任意目录（原生目录选择器），导出后自动打开所在目录。
 - **导入**：选择文件（JSON / CSV）合并导入，按时间去重。
 - **持久化**：记录实时落盘到**固定专用数据目录**（如 `%LOCALAPPDATA%\dsh-usage-plugin\dsh-usage\usage-records.json`，详见下文「数据目录」），与当前工作区无关，重启自动恢复（上限 100000 条，尽量多存）。
 - **界面适配**：面板字号跟随应用「显示大小」设置自动缩放（em 相对字号）；桌面端宽表在容器内横向滑动（max-content + overflow-x），**移动端（≤900px）表格贴合屏宽、不再出现横向滑条**，弹窗与卡片随视口自适应。
-- **英文界面（i18n）**：面板语言跟随宿主的「通用设置 → 语言」——在那里切换，插件即时跟随，不再自带切换按钮，也不再用 `localStorage` 覆盖系统语言。双语词典覆盖整个面板（含高峰 / 空闲时段说明、余额查询、PNG 报告）；外部「会话 / 设置」标签页名按渲染时读取，切换语言后实时更新。
-- **消息底部 token 弹窗**：一轮输出完成后，助手消息底部操作行新增「本轮 token」按钮，点击弹出 `Token 明细`，分两层统计——**对话累计**（整场会话的 总 token / 总消耗 / 耗时 / 缓存命中率）与**本轮明细**（本次输出 / 本轮 token / 本轮消耗 / 本轮耗时 / 本轮缓存命中率、缓存命中长条图、按模型卡片：每个模型显示 输入·未命中 / 缓存命中 / 输出（+推理）与峰 / 谷成本分列）。时长按「X分Y秒」显示。宿主记录带会话标识（`sessionId`），本轮与整场对话统计各自独立。
+- **英文界面（i18n）**：面板语言跟随宿主的「通用设置 → 语言」——在那里切换，插件即时跟随，不再自带切换按钮，也不再用 `localStorage` 覆盖系统语言。双语词典覆盖整个面板（含高峰 / 空闲时段说明、PNG 报告）；外部「会话 / 设置」标签页名按渲染时读取，切换语言后实时更新。
 - **内部/工具调用单独分组**：内部/占位调用（如 `dsh2shell-*`、模型 `fake`）不混入模型消耗明细，单独收在「消耗明细」下方可折叠的 **「工具调用（内部）」** 分组里（默认收起），成本表只统计真实模型调用。
 - **移动端适配**：≤900px 时表格贴合屏宽（不再出现横向滑条）、宽表折叠中间列，弹窗统计卡与按模型卡片随视口自适应。
 
@@ -56,38 +47,34 @@ dsh-usage-plugin 是 DeepSeek Harness 生态的**用量与消耗统计插件**�
 ### 用量与消耗
 ![用量与消耗](./docs/assets/usage-overview.png)
 
-### 剩余余额查询
-![剩余余额查询](./docs/assets/balance-query.png)
+## 从本仓库安装
 
-## 推荐安装方式
-
-> 两个方法任选其一，效果等价。**推荐使用桌面端**，全程图形化、无需命令行。
-
-### 方式一（推荐）：桌面端一键安装
-
-安装 [DeepSeek Harness 桌面版](https://github.com/feiyang-dev/DeepSeek-Harness-Desktop)，打开后点击 **「安装插件」→ 推荐插件 → 用量与消耗插件 → 一键安装**，完成后点 **「立即重启服务」** 即可生效。
-
-### 方式二：命令行安装
+使用 GitHub 仓库地址直接安装：
 
 ```bash
-# 前提：已安装 dsh（npm install -g @deepseek-ai/dsh）
-dsh plugin --profile web add @feiyang666/dsh-usage-plugin
+dsh plugin --profile web add github:realhenrylan/dsh-token-plugin
 ```
 
-也可对其它 profile 安装：
+`github:realhenrylan/dsh-token-plugin` 对应仓库地址 https://github.com/realhenrylan/dsh-token-plugin。
+
+也可以在本地打包安装：
+
+使用 GitHub 仓库地址克隆，然后打包并通过 DSH 安装：
 
 ```bash
-dsh plugin --profile web add @feiyang666/dsh-usage-plugin
-dsh plugin --profile headless add @feiyang666/dsh-usage-plugin
+git clone https://github.com/realhenrylan/dsh-token-plugin.git
+cd dsh-token-plugin
+npm pack
+dsh plugin --profile web add ./dsh-token-plugin-2.0.1.tgz
 ```
 
-装完重启 dsh web 服务即可。详细的手动安装 / 接线 / 卸载 / 排障说明见下方。
+如果已经克隆仓库，可直接在仓库目录中执行后两条命令。安装包文件名中的版本号以 `npm pack` 的输出为准。
 
----
+安装后重启 DSH 服务。也可通过 `dsh plugin --profile web add dsh-token-plugin` 安装已发布版本。桌面端推荐列表由其维护方单独管理。
 
 ## 这个包是什么
 
-一个 npm 包 = **host 半**（Node 侧 Cordis 插件，负责记录、计费、余额查询、导出，见 `lib/index.js`）+ **client 半**（浏览器侧面板，见 `lib/client.js`，通过 `/usage/api` 与 host 通信）。
+一个 npm 包 = **host 半**（Node 侧 Cordis 插件，负责记录、计费、导出，见 `lib/index.js`）+ **client 半**（浏览器侧面板，见 `lib/client.js`，通过 `/usage/api` 与 host 通信）。
 
 包通过两处声明接入 DSH：
 
@@ -100,154 +87,9 @@ dsh plugin --profile headless add @feiyang666/dsh-usage-plugin
 
 ---
 
-## 安装（给使用者）
+## 更新和卸载
 
-### 0. 前提条件
-
-- 已安装 DeepSeek Harness（`npm install -g @deepseek-ai/dsh` 全局安装，或使用基于它的桌面应用 / `npx @deepseek-ai/dsh web`）。
-- 安装方式 A（推荐）需要 **pnpm**：`npm install -g pnpm`（或 `corepack enable`）。
-- 确保 `dsh` 命令在 PATH 里（桌面应用自带环境则在其终端中执行）。
-
-### 1. 方法 A（推荐）：一条命令安装
-
-```bash
-dsh plugin --profile web add @feiyang666/dsh-usage-plugin
-```
-
-这条命令会做三件事（全部自动）：
-
-1. 在 `~/.dsh/profiles/web` 里通过 pnpm 安装本包（首次使用会自动初始化该 profile）；
-2. 检测到包的 `dsh.bundle` 声明，自动把包名写进 profile 的 `dsh.profile.bundles` 层列表；
-3. 重启后，DSH 启动时会自动读取包内的 `cordis.patch.yml`，把插件行挂进应用树——**不需要**手动编辑任何配置文件。
-
-其它 profile 同理，把 `web` 换成你的 profile 名即可（如 `dsh plugin --profile headless add ...`；`dsh web` 等价于 `dsh --profile web`）。
-
-> 想用本地 tarball 测试：`dsh plugin --profile web add C:\path\to\feiyang666-dsh-usage-plugin-1.9.0.tgz`
-
-### 2. 方法 B：手动安装（不使用 pnpm / 无 `dsh plugin`）
-
-只在没有 pnpm 或需要完全手工控制时才用。请**不要在 `~/.dsh/profiles` 根目录直接 `npm install`**（该目录没有 package.json，npm 会把整个 node_modules 当残留清掉）。
-
-**B1. 用 pnpm 但不用 `dsh plugin`：**
-
-```bash
-cd ~/.dsh/profiles/web
-pnpm add @feiyang666/dsh-usage-plugin
-# 然后手动把插件行加进 web/cordis.patch.yml（见 B3），再重启
-```
-
-**B2. 或用 npm：** 在 profile 目录先补一个最小 package.json 再装：
-
-```bash
-cd ~/.dsh/profiles/web
-# 若该目录还没有 package.json（用 dsh plugin 初始化过才会有）：
-# echo '{"name":"dsh-profile-web","private":true,"dependencies":{}}' > package.json
-npm install @feiyang666/dsh-usage-plugin
-```
-
-**B3. 接线（只需做一次，幂等）：** 在 `~/.dsh/profiles/web/cordis.patch.yml` 末尾追加：
-
-```yaml
-- insert:
-    - id: usage-plugin
-      name: '@feiyang666/dsh-usage-plugin'
-      inject:
-        - fs
-        - webServer
-        - subprocess
-        - credentials
-        - sandboxPolicy
-        - agents
-```
-
-也可以直接跑包内的接线脚本（自动找 profile 并追加，幂等）：
-
-```bash
-node node_modules/@feiyang666/dsh-usage-plugin/scripts/wire.js
-```
-
-> ⚠️ 行上的 `inject` 列表**不能省略**：它让 Cordis 等到 `fs` / `webServer` / `subprocess` / `credentials` / `sandboxPolicy` / `agents` 服务就绪后再激活插件。缺了它，`/usage/api` 路由不会注册，面板会报 `Unexpected end of JSON input`。
-
-### 3. 方法 C：桌面应用
-
-桌面版（如 [DeepSeek Harness 桌面版](https://github.com/feiyang-dev/DeepSeek-Harness-Desktop)）底层就是同一个 `~/.dsh/profiles`。在任意终端执行方法 A 的命令即可，装完重启应用；应用内启动的是同一个 `dsh web`，插件自动生效。
-
-### 4. 重启并验证
-
-重启 DeepSeek Harness 的 web 应用（命令行：结束旧进程后重新运行 `dsh web`；桌面应用：完全退出后重新打开）。然后：
-
-- 刷新 http://127.0.0.1:3080 ，顶部「对话」「轨迹」之后会出现 **「用量与消耗」** 和 **「剩余余额查询」** 两个 tab；设置里也有对应入口。
-- 「用量与消耗」面板自 v1.22.0 起按**用途**而非**数据来源**分页：**用量**（摘要条 + 关键指标 + 趋势 / 占比）、**日历**（热力图 + 每日统计）、**明细**（按模型 / 按服务商 / 缓存命中）、**设置**（价格表 / 汇率 / 预算 / 历史快照 / 口径声明 / 导出与数据）。
-- 发一条消息后，「用量与消耗」面板应出现本次调用的 token / 消耗记录。
-
-### 5. 配置（余额查询需要）
-
-「剩余余额查询」使用当前配置的 `DEEPSEEK_API_KEY`：在 **设置 → 模型** 中配置 API Key（与跑对话用的同一个 key），然后打开「剩余余额查询」tab 点「查询余额」。
-
-面板共 6 个服务商页签，凭据要求各不相同：
-
-| 页签 | 所需凭据 | 说明 |
-| --- | --- | --- |
-| DeepSeek | `DEEPSEEK_API_KEY`（设置 → 模型） | 自 v1.19.0 起**多币种账户会按币种逐行展示**（人民币赠送余额 + 美元充值余额同时可见，不再只显示数组第一条） |
-| SiliconFlow | 「设置 → 模型」中 Provider ID / 显示名为 siliconflow 的提供商所引用的 API Key | 该公开接口不返回代金券与历史用量 |
-| DigitalOcean | 账户级 `dop_v1_` Personal Access Token（含 `billing:read`） | 可在此页直接保存 Token，不需要重启 |
-| AMD GPU Cloud | — | 无公开余额 API，只给控制台入口 |
-| 百炼 Token Plan | 百炼控制台 OAuth token（`bl auth login --console` 生成） | 展示 1 周配额的已用进度与周期 |
-| 百炼按量付费 | — | 扣的是阿里云账户余额，**模型 API Key 查不到**；请到阿里云费用中心查看（见 issue #15） |
-
----
-
-## 卸载
-
-```bash
-dsh plugin --profile web remove @feiyang666/dsh-usage-plugin
-```
-
-（等价于 pnpm remove；`dsh plugin` 会自动把包名从 `dsh.profile.bundles` 层列表里移除。）然后重启应用即可。
-
-手工安装的（方法 B），反向操作：删除 `cordis.patch.yml` 里的 `usage-plugin` 行，再 `pnpm remove` / `npm uninstall` 该包，重启。
-
-> 从 1.0.x 手工接线版升级到 1.1.x 时：先删掉旧 `cordis.patch.yml` 里的 `usage-plugin` 行（或整体按卸载流程走一遍），再按方法 A 重装，避免同一插件被挂载两次。
-
----
-
-## 如何更新插件
-
-发布在 npm 上，因此更新本质就是把已发布的包拉到最新——你的用量历史**不会丢**（自 v1.9.2 起数据存放在固定的专用目录，不位于任何 profile / 工作区，更新不会清掉它）。
-
-### 桌面端
-打开 **「安装插件」** → 找到 **Usage & Cost Tracker** → 点 **更新**（或 **重新安装**）→ **「立即重启服务」**。若没有更新按钮，先卸载再重新安装即可。
-
-### 命令行（方式 A）
-重新执行 `add` 是幂等的，会拉取最新版本：
-
-```bash
-dsh plugin --profile web add @feiyang666/dsh-usage-plugin
-dsh web   # 重启
-```
-
-锁定某个版本：
-
-```bash
-dsh plugin --profile web add @feiyang666/dsh-usage-plugin@1.9.3
-```
-
-### 手动安装（方式 B）
-在 profile 目录下：
-
-```bash
-cd ~/.dsh/profiles/web
-pnpm update @feiyang666/dsh-usage-plugin   # 或：npm update @feiyang666/dsh-usage-plugin
-```
-
-### 查看已装版本
-```bash
-npm ls @feiyang666/dsh-usage-plugin --prefix ~/.dsh/profiles/web
-```
-
-> ⚠️ **不要手动修改 `~/.dsh/profiles/web/node_modules/@feiyang666/dsh-usage-plugin/` 下的文件**（如 `lib/index.js` / `lib/client.js`）。每次更新都会从 npm 重新解包并覆盖这些文件，本地改动会被静默丢弃。如需改行为，请 fork 仓库自行发布版本或向上游提贡献。
-
----
+更新时重新打包当前仓库，再使用上面的命令安装新安装包。卸载时运行 `dsh plugin --profile web remove dsh-token-plugin`，然后重启 DSH。
 
 ## 数据与位置
 
@@ -319,14 +161,10 @@ npm ls @feiyang666/dsh-usage-plugin --prefix ~/.dsh/profiles/web
 | --- | --- |
 | 面板报 `Unexpected end of JSON input` | 插件行缺少 `inject` 列表，路由未注册。按方法 B3 补上 inject 后重启 |
 | 面板一直空白 / 顶部无 tab | 插件未激活。看会话工作区 `dsh-usage-boot.log`；确认 `cordis.patch.yml` 里的行存在且 `name` 正确 |
-| 余额查询失败「未配置 DEEPSEEK_API_KEY」 | 在 设置 → 模型 里配置 API Key |
-| 余额查询失败网络错误 | 确认能访问 `api.deepseek.com`（国内网络请配置代理） |
 | `dsh plugin` 报 pnpm not found | 安装 pnpm：`npm install -g pnpm` |
 | 安装时连不上 npm 官方源 | 配置镜像：`npm config set registry https://registry.npmmirror.com`（或对 pnpm 设 `pnpm config set registry ...`）后再执行安装命令 |
 | 卸载后仍报 `Cannot find package '@feiyang666/...'` | profile 里残留了包引用。删掉 `cordis.patch.yml` 中对应行与 `dsh.profile.bundles` 里的包名，重启 |
-| 安装时提示「`dsh-usage-plugin@0.1.x` 与 DSH x.y.z 不兼容（要求 `@deepseek-ai/dsh-credentials` / `dsh-host-webserver` 的 rc 版本）」 | 这是 **0.1.x 旧包**的依赖声明，当前 1.x 只依赖 `undici`、把 `@deepseek-ai/cordis` 当可选 peer。先卸掉旧包再装最新版：`dsh plugin --profile web remove @feiyang666/dsh-usage-plugin` 然后 `dsh plugin --profile web add @feiyang666/dsh-usage-plugin`；桌面端走「安装插件 → 卸载 → 一键安装」（issue #16） |
 | Desktop 0.2.x 上费用恒为 ¥0、且价格页提示"全部记录都没有冻结单价" | 1.18.0 及更早只认 `deepseek-official` / `deepseek` 两个 provider id，而桌面端官方账号的 id 是 `deepseek-account`。升级到 **1.19.0** 起按前缀识别所有 `deepseek-*`，新记录冻结单价，历史记录的费用也会一并算对（issue #19） |
-| 余额只显示一种货币 | 1.19.0 起按 `/user/balance` 的 `balance_infos` 逐币种展示；旧版只取第一条数组元素（issue #17） |
 
 ---
 
@@ -334,7 +172,6 @@ npm ls @feiyang666/dsh-usage-plugin --prefix ~/.dsh/profiles/web
 
 | 项目 | 说明 | 安装方式 |
 | --- | --- | --- |
-| [DeepSeek Harness 桌面版](https://github.com/feiyang-dev/DeepSeek-Harness-Desktop) | Windows 桌面控制台：一键安装/启动/停止/重启 dsh web 服务，内置插件管理，**推荐插件区一键安装本插件** | 下载桌面版，点几下即可 |
 | [数据保险箱（dsh-vault）](https://github.com/feiyang-dev/dsh-vault) | 自动备份 / 清空检测 / 一键恢复，保护聊天记录与工作区数据 | 桌面端一键安装，或 `dsh plugin add @feiyang666/dsh-vault` |
 | [DeepSeek-Harness](https://github.com/deepseek-ai/DeepSeek-Harness) | 官方 CLI / Web 服务 | 见下方「运行 DeepSeek Harness」 |
 

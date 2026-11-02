@@ -1,0 +1,434 @@
+{
+  "sourceId": "qwen",
+  "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
+  "fetchedAt": "2026-11-01T20:54:00+08:00",
+  "ok": true,
+  "region": "cn-beijing",
+  "models": [
+    {
+      "officialModelId": "qwen3.6-27b",
+      "aliases": ["Qwen3.6-27B"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 3, "cachedInput": null, "output": 18 },
+          "thinkingOutput": 18
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": { "supported": false, "note": "不在官方上下文缓存支持模型列表（北京）内" },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "用量记录型号。非思考/思考输出同价。海外仅见新加坡（国际）价 4.49652/26.97912。第三方平台 siliconflow 的 qwen/qwen3.6-27b（文档写法 Qwen/Qwen3.6-27B）与本型号是否同一版本不可确认，暂不得套用本价格。"
+    },
+    {
+      "officialModelId": "qwen3.8-27b",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 3, "cachedInput": 0.3, "output": 12 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "cachedInput=输入价x10%（官方公布比例推导，非页面直接数字）。免费额度 100 万 Token（仅北京）。"
+    },
+    {
+      "officialModelId": "qwen3.5-27b",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 128000,
+          "buckets": { "input": 0.6, "cachedInput": null, "output": 4.8 },
+          "thinkingOutput": 4.8
+        },
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 1.8, "cachedInput": null, "output": 14.4 },
+          "thinkingOutput": 14.4
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": { "supported": false, "note": "不在官方上下文缓存支持模型列表（北京）内" },
+      "effectiveFrom": null,
+      "completeness": "full"
+    },
+    {
+      "officialModelId": "qwen-max",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": null,
+          "buckets": { "input": 2.4, "cachedInput": null, "output": 9.6 }
+        }
+      ],
+      "thinking": { "supported": false, "note": "仅非思考模式" },
+      "cache": { "supported": false, "note": "不在官方上下文缓存支持模型列表（北京）内" },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "无阶梯计价（maxInputTokens=null 表示官方无阶梯上限）。"
+    },
+    {
+      "officialModelId": "qwen-plus",
+      "aliases": ["qwen-plus-latest", "qwen-plus-2025-12-01"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 128000,
+          "buckets": { "input": 0.8, "cachedInput": 0.08, "output": 2 },
+          "thinkingOutput": 8
+        },
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 2.4, "cachedInput": 0.24, "output": 20 },
+          "thinkingOutput": 24
+        },
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 4.8, "cachedInput": 0.48, "output": 48 },
+          "thinkingOutput": 64
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": true,
+        "note": "输出单价分非思考/思考（思考=思维链+回答）两列；tiers[].output 为非思考价，tiers[].thinkingOutput 为思考价"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "batch": { "supported": true, "ratioOfRealtime": 0.5 },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "cachedInput=输入价x10%（官方比例推导）。qwen-plus、qwen-plus-latest 标「Batch调用半价」；qwen-plus-2025-12-01 同价但未标 Batch。旧快照 qwen-plus-2025-07-14/-2025-04-28 无阶梯 0.8/2/8。"
+    },
+    {
+      "officialModelId": "qwen3.8-max",
+      "aliases": ["qwen3.8-max-0902"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 12, "cachedInput": null, "output": 36 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": null,
+        "implicitHitRatioOfInput": null,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null,
+        "note": "官方例外型号：创建 125%，但命中价不是输入价的 10%，具体价格仅百炼控制台可见（公开页无数值）"
+      },
+      "batch": { "supported": true, "ratioOfRealtime": 0.5 },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "missing": ["cacheHitUnitPrice"],
+      "note": "免费额度 100 万 Token（仅北京）。"
+    },
+    {
+      "officialModelId": "qwen3.7-max",
+      "aliases": ["qwen3.7-max-2026-05-20", "qwen3.7-max-2026-06-08"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 12, "cachedInput": 1.2, "output": 36 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "batch": { "supported": true, "ratioOfRealtime": 0.5 },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "官方注「当前能力等同于 qwen3.7-max-2026-05-20」，两快照同价。cachedInput=输入价x10%（比例推导）。qwen3.7-max-preview（=qwen3.7-max-2026-05-17）仅思考模式、同价 12/36。"
+    },
+    {
+      "officialModelId": "qwen3.7-plus",
+      "aliases": ["qwen3.7-plus-2026-05-26"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 2, "cachedInput": 0.2, "output": 8 }
+        },
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 6, "cachedInput": 0.6, "output": 24 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "batch": { "supported": true, "ratioOfRealtime": 0.5 },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "页面价格为原价并标「限时8折」，折后价未公布（不猜测）；tiers 记录原价。cachedInput=输入价x10%（比例推导）。快照 qwen3.7-plus-2026-05-26 同价（无折扣标记）。"
+    },
+    {
+      "officialModelId": "qwen3.6-plus",
+      "aliases": ["qwen3.6-plus-2026-04-02"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 2, "cachedInput": 0.2, "output": 12 }
+        },
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 8, "cachedInput": 0.8, "output": 48 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "cachedInput=输入价x10%（比例推导）。"
+    },
+    {
+      "officialModelId": "qwen3.5-plus",
+      "aliases": ["qwen3.5-plus-2026-02-15", "qwen3.5-plus-2026-04-20"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 128000,
+          "buckets": { "input": 0.8, "cachedInput": 0.08, "output": 4.8 }
+        },
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 2, "cachedInput": 0.2, "output": 12 }
+        },
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 4, "cachedInput": 0.4, "output": 24 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "cachedInput=输入价x10%（比例推导）。"
+    },
+    {
+      "officialModelId": "qwen3.8-2.4t-a95b",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 12, "cachedInput": null, "output": 36 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": null,
+        "implicitHitRatioOfInput": null,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null,
+        "note": "官方例外型号：创建 125%，但命中价不是输入价的 10%，公开页无数值"
+      },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "missing": ["cacheHitUnitPrice"],
+      "note": "免费额度 100 万 Token（仅北京）。"
+    },
+    {
+      "officialModelId": "qwen3.8-flash",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 0.8, "cachedInput": null, "output": 2.7 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": null,
+        "hitRatioOfInput": null,
+        "implicitHitRatioOfInput": null,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null,
+        "note": "官方例外型号：创建价不是 125%、命中价不是 10%，且比例随地域不同，公开页无数值"
+      },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "missing": ["cacheWriteUnitPrice", "cacheHitUnitPrice"],
+      "note": "免费额度 100 万 Token（仅北京）。"
+    },
+    {
+      "officialModelId": "qwen3.7-flash",
+      "aliases": ["qwen3.7-flash-2026-07-15"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        {
+          "maxInputTokens": 32000,
+          "buckets": { "input": 0.2, "cachedInput": 0.02, "output": 0.8 }
+        },
+        {
+          "maxInputTokens": 256000,
+          "buckets": { "input": 0.6, "cachedInput": 0.06, "output": 2.4 }
+        },
+        {
+          "maxInputTokens": 1000000,
+          "buckets": { "input": 1.2, "cachedInput": 0.12, "output": 4.8 }
+        }
+      ],
+      "thinking": {
+        "supported": true,
+        "separatelyPriced": false,
+        "outputIncludes": "思维链+回答"
+      },
+      "cache": {
+        "supported": true,
+        "modes": ["explicit", "implicit"],
+        "writeRatioOfInput": 1.25,
+        "hitRatioOfInput": 0.1,
+        "implicitHitRatioOfInput": 0.2,
+        "minCacheableTokens": 1024,
+        "ttlSeconds": 300,
+        "storageFee": null
+      },
+      "batch": { "supported": true, "ratioOfRealtime": 0.5 },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "note": "cachedInput=输入价x10%（比例推导）。免费额度 100 万 Token（仅北京，主 ID；日期快照无）。"
+    },
+    {
+      "officialModelId": "qwen-turbo",
+      "aliases": [],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [],
+      "thinking": null,
+      "cache": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "missing": ["tiers", "thinking", "cache"],
+      "note": "来源不可用：当前官方价格页未列出文本模型 qwen-turbo（仅 qwen-audio-turbo「目前仅供免费体验」与 qwen-doc-turbo 0.6/1 元/百万Token）。不猜测单价。"
+    }
+  ],
+  "notes": "百炼官方价（华北2北京，按量，元/百万Token）。单位 per_1m_tokens=元/百万Token；阶梯按单次请求输入 Token 总量定档，全部 Token 按该档单价结算；K=1,000。cachedInput 数值标注「比例推导」者=官方公布比例（显式缓存命中=输入价10%，创建=125%，隐式命中=20%）x输入价的算术结果，非页面直接数字；例外型号留 null。免费额度仅北京、90 天有效。Batch 支持者输入输出 5 折，与缓存折扣不同时生效。effectiveFrom 全部为 null：官方页面「更新时间」动态渲染，静态 HTML 无生效日期，生效时间未知，不以 fetchedAt 冒充。第三方别名：siliconflow 的 qwen/qwen3.6-27b（文档写法 Qwen/Qwen3.6-27B）与百炼 qwen3.6-27b 是否同一版本不可确认（双方均无版本指纹/映射表），暂不套用官方价。机器可读价格接口 GET /api/v1/models 需 API Key（北京端点需 WorkspaceId），返回含第三方厂商与推理服务商（含 siliconflow）需过滤 provider/inference_provider；其文档示例价格（qwen3.8-max 2/8）与价格页（12/36）不一致，官方声明示例仅展示结构、以实际返回为准，故不采信。本样本不含任何 key/token/WorkspaceId。"
+}

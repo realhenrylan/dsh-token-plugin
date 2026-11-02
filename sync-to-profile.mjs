@@ -2,12 +2,12 @@
 // dsh-usage-plugin 本地同步脚本（无需发布 NPM / 无需重新安装）。
 //
 // 背景（与 dsh-mobile-remote 的 sync-to-profile.mjs 一致）：
-//   已安装的插件实体在 ~/.dsh/profiles/<profile>/node_modules/@feiyang666/dsh-usage-plugin/。
+//   已安装的插件实体在 ~/.dsh/profiles/<profile>/node_modules/dsh-token-plugin/。
 //   dsh 对已安装插件的加载方式：
 //     - client 侧（lib/client.js）：由 dsh-client-modules 经 /plugins/<id>/client.js
 //       路由「每次实时 readFile」提供（cache-control: no-cache）
 //       → 同步后【刷新浏览器页面】即生效，无需重启 dsh、无需发布 NPM。
-//     - host 侧（lib/index.js、lib/balance.js）：运行在 dsh 的 Node 进程内，
+//     - host 侧（lib/index.js）：运行在 dsh 的 Node 进程内，
 //       有模块缓存，且 HMR watcher 默认忽略 node_modules 目录
 //       → 同步后必须【重启 dsh 服务】才生效（桌面端点「停止」再「启动」，或 CLI 重启）。
 //
@@ -27,19 +27,28 @@ const here = dirname(fileURLToPath(import.meta.url))
 const pkg = JSON.parse(readFileSync(join(here, 'package.json'), 'utf8'))
 const profile = process.env.DSH_PROFILE || 'web'
 const home = process.env.DSH_HOME || join(homedir(), '.dsh')
-const target = join(home, 'profiles', profile, 'node_modules', '@feiyang666', String(pkg.name).split('/').pop())
+const target = join(home, 'profiles', profile, 'node_modules', ...String(pkg.name).split('/'))
 
 if (!existsSync(target)) {
   console.error(`[同步失败] 未找到已安装的插件目录：${target}`)
-  console.error('请先在桌面端「插件管理」或 CLI 安装一次 @feiyang666/dsh-usage-plugin：')
-  console.error('  dsh plugin --profile web add @feiyang666/dsh-usage-plugin')
+  console.error('请先在桌面端「插件管理」或 CLI 安装一次 dsh-token-plugin：')
+  console.error('  dsh plugin --profile web add dsh-token-plugin')
   process.exit(1)
 }
 
-// 需要同步的文件：lib 下全部 JS + patch + manifest + 文档。
-const libFiles = readdirSync(join(here, 'lib')).filter((f) => f.endsWith('.js'))
+// 需要同步的文件：lib 下全部 JS/JSON（含 lib/pricing/** 子目录与种子目录）+ patch + manifest + 文档。
+function walkLib (dir, prefix) {
+  const out = []
+  for (const ent of readdirSync(join(here, dir), { withFileTypes: true })) {
+    const rel = prefix ? prefix + '/' + ent.name : ent.name
+    if (ent.isDirectory()) out.push(...walkLib(join(dir, ent.name), rel))
+    else if (/\.(js|json)$/.test(ent.name)) out.push(rel)
+  }
+  return out
+}
+const libFiles = walkLib('lib', 'lib')
 const FILES = [
-  ...libFiles.map((f) => join('lib', f)),
+  ...libFiles,
   'cordis.patch.yml',
   'package.json',
   'README.md',
@@ -67,6 +76,6 @@ console.log('')
 console.log('接下来按改动范围处理：')
 console.log('  1. 只改了 lib/client.js（前端 UI）→ 直接刷新浏览器页面即可生效，无需重启。')
 console.log('     （dsh 的 /plugins/<id>/client.js 每次实时读文件，刷新即拿新代码）')
-console.log('  2. 改了 lib/index.js / lib/balance.js 等 host 侧代码')
+console.log('  2. 改了 lib/index.js 等 host 侧代码')
 console.log('     → 需重启 dsh 服务：桌面端点「停止」再「启动」，或 CLI 重启。')
 console.log('     （host 侧在 Node 进程内有模块缓存，且 HMR 默认忽略 node_modules，必须重启）')

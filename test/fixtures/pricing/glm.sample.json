@@ -1,0 +1,617 @@
+{
+  "sourceId": "glm",
+  "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
+  "fetchedAt": "2026-11-01T20:58:36+08:00",
+  "ok": true,
+  "models": [
+    {
+      "officialModelId": "glm-5.3",
+      "aliases": ["GLM-5.3"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 8, "cachedInput": 2, "output": 28 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "request_example",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "glm-5.3-flash",
+      "aliases": ["GLM-5.3-Flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 0.8, "cachedInput": 0.23, "output": 2.8 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "model_code",
+      "inputModalities": ["image", "video", "file", "text"]
+    },
+    {
+      "officialModelId": "glm-5.3-flashx",
+      "aliases": ["GLM-5.3-FlashX"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 2, "cachedInput": 0.57, "output": 7 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "model_code",
+      "inputModalities": ["image", "video", "file", "text"]
+    },
+    {
+      "officialModelId": "glm-5.3-flashx-legal",
+      "aliases": ["GLM-5.3-FlashX-Legal"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 2, "cachedInput": 0.57, "output": 7 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "model_code",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "glm-5.2",
+      "aliases": ["GLM-5.2"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 8, "cachedInput": 2, "output": 28 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "request_example",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-5.1",
+      "aliases": ["glm-5.1"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 6, "cachedInput": 1.3, "output": 24 } },
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "输入长度 ≥32K", "buckets": { "input": 8, "cachedInput": 2, "output": 28 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-5-Turbo",
+      "aliases": ["glm-5-turbo"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 5, "cachedInput": 1.2, "output": 22 } },
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "输入长度 ≥32K", "buckets": { "input": 7, "cachedInput": 1.8, "output": 26 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-5",
+      "aliases": ["glm-5"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 4, "cachedInput": 1, "output": 18 } },
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "输入长度 ≥32K", "buckets": { "input": 6, "cachedInput": 1.5, "output": 22 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "glm-4.7",
+      "aliases": ["GLM-4.7"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": 200, "label": "输入 [0, 32K)，输出 [0, 0.2K)", "buckets": { "input": 2, "cachedInput": 0.4, "output": 8 } },
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入 [0, 32K)，输出 ≥0.2K", "buckets": { "input": 3, "cachedInput": 0.6, "output": 14 } },
+        { "maxInputTokens": 200000, "maxOutputTokens": null, "label": "输入 [32K, 200K)", "buckets": { "input": 4, "cachedInput": 0.8, "output": 16 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "request_example",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4.5-Air",
+      "aliases": ["glm-4.5-air"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": 200, "label": "输入 [0, 32K)，输出 [0, 0.2K)", "buckets": { "input": 0.8, "cachedInput": 0.16, "output": 2 } },
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入 [0, 32K)，输出 ≥0.2K", "buckets": { "input": 0.8, "cachedInput": 0.16, "output": 6 } },
+        { "maxInputTokens": 128000, "maxOutputTokens": null, "label": "输入 [32K, 128K)", "buckets": { "input": 1.2, "cachedInput": 0.24, "output": 8 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4.7-FlashX",
+      "aliases": ["glm-4.7-flashx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "200K", "buckets": { "input": 0.5, "cachedInput": 0.1, "output": 3 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4.7-Flash",
+      "aliases": ["glm-4.7-flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "200K", "buckets": { "input": 0, "cachedInput": 0, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["text"],
+      "note": "官方标价『免费』（输入/输出/缓存命中均为免费），0 表示官方明确免费"
+    },
+    {
+      "officialModelId": "glm-4-plus",
+      "aliases": ["GLM-4-Plus"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 5, "cachedInput": 2.5, "output": 5 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "full",
+      "idEvidence": "request_example",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4-Air-250414",
+      "aliases": ["glm-4-air-250414"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0.5, "cachedInput": 0.25, "output": 0.5 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4-AirX",
+      "aliases": ["glm-4-airx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "8K", "buckets": { "input": 10, "cachedInput": null, "output": 10 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "缓存命中官方标注『不支持』，cachedInput=null 表示不支持缓存计价（非免费）"
+    },
+    {
+      "officialModelId": "GLM-4-Long",
+      "aliases": ["glm-4-long"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "1M", "buckets": { "input": 1, "cachedInput": 0.5, "output": 1 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4-Assistant",
+      "aliases": ["glm-4-assistant"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 5, "cachedInput": null, "output": 5 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-Z1-Air",
+      "aliases": ["glm-z1-air"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0.5, "cachedInput": null, "output": 0.5 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-Z1-AirX",
+      "aliases": ["glm-z1-airx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "32K", "buckets": { "input": 5, "cachedInput": null, "output": 5 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-Z1-FlashX",
+      "aliases": ["glm-z1-flashx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0.1, "cachedInput": null, "output": 0.1 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-4-FlashX-250414",
+      "aliases": ["glm-4-flashx-250414"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0.1, "cachedInput": 0.05, "output": 0.1 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"]
+    },
+    {
+      "officialModelId": "GLM-4-Flash-250414",
+      "aliases": ["glm-4-flash-250414"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0, "cachedInput": null, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-Z1-Flash",
+      "aliases": ["glm-z1-flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K", "buckets": { "input": 0, "cachedInput": null, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text"],
+      "note": "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-OCR",
+      "aliases": ["glm-ocr"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "32K", "buckets": { "input": 0.2, "cachedInput": null, "output": 0.2 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "pdf"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-5V-Turbo",
+      "aliases": ["glm-5v-turbo"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 5, "cachedInput": 1.2, "output": 22 } },
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "输入长度 ≥32K", "buckets": { "input": 7, "cachedInput": 1.8, "output": 26 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "video", "text"]
+    },
+    {
+      "officialModelId": "GLM-4.6V",
+      "aliases": ["glm-4.6v"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 1, "cachedInput": 0.2, "output": 3 } },
+        { "maxInputTokens": 128000, "maxOutputTokens": null, "label": "输入长度 [32K, 128K)", "buckets": { "input": 2, "cachedInput": 0.4, "output": 6 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "video", "text"]
+    },
+    {
+      "officialModelId": "GLM-4.6V-FlashX",
+      "aliases": ["glm-4.6v-flashx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 0.15, "cachedInput": 0.03, "output": 1.5 } },
+        { "maxInputTokens": 128000, "maxOutputTokens": null, "label": "输入长度 [32K, 128K)", "buckets": { "input": 0.3, "cachedInput": 0.03, "output": 3 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["image", "video", "text"]
+    },
+    {
+      "officialModelId": "GLM-4.6V-Flash",
+      "aliases": ["glm-4.6v-flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "—", "buckets": { "input": 0, "cachedInput": 0, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "video", "text"],
+      "note": "官方标价『免费』（0 为官方明确免费，含缓存命中）"
+    },
+    {
+      "officialModelId": "GLM-4.5V",
+      "aliases": ["glm-4.5v"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": 32000, "maxOutputTokens": null, "label": "输入长度 [0, 32K)", "buckets": { "input": 2, "cachedInput": 0.4, "output": 6 } },
+        { "maxInputTokens": 64000, "maxOutputTokens": null, "label": "输入长度 [32K, 64K)", "buckets": { "input": 4, "cachedInput": 0.8, "output": 12 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["image", "video", "text"]
+    },
+    {
+      "officialModelId": "GLM-4V-Plus-0111",
+      "aliases": ["glm-4v-plus-0111"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "16K", "buckets": { "input": 4, "cachedInput": 2, "output": 4 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["image", "text"]
+    },
+    {
+      "officialModelId": "GLM-4V-Flash",
+      "aliases": ["glm-4v-flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "4K", "buckets": { "input": 0, "cachedInput": null, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "text"],
+      "note": "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-4.1V-Thinking-FlashX",
+      "aliases": ["glm-4.1v-thinking-flashx"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "64K", "buckets": { "input": 2, "cachedInput": null, "output": 2 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["image", "text"],
+      "note": "缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-4.1V-Thinking-Flash",
+      "aliases": ["glm-4.1v-thinking-flash"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "64K", "buckets": { "input": 0, "cachedInput": null, "output": 0 } }
+      ],
+      "cacheStorage": { "status": "limited_time_free", "pricePer1mTokensPerHour": 0, "postPromoPrice": null },
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["image", "text"],
+      "note": "官方标价『免费』（0 为官方明确免费）；缓存命中官方标注『不支持』"
+    },
+    {
+      "officialModelId": "GLM-ASR-2512",
+      "aliases": ["glm-asr-2512"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "输入：16 元/百万 Tokens（约 0.0002 元/秒）；输出：不计费", "buckets": { "input": 16, "cachedInput": null, "output": 0 } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "inputModalities": ["audio"],
+      "note": "语音识别：输出不计费（0 为官方明确不计费）；官方同时给出约 0.0002 元/秒的音频折算参考"
+    },
+    {
+      "officialModelId": "GLM-4-Voice",
+      "aliases": ["glm-4-voice"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "unsplitTokenRate": 80,
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "80 元/百万 Tokens", "buckets": { "input": null, "cachedInput": null, "output": null } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "inputModalities": ["text", "audio"],
+      "note": "官方仅给单一单价 80 元/百万 Tokens，未区分输入/输出桶；buckets 置 null 表示分桶语义不明，自动计价前需官方澄清"
+    },
+    {
+      "officialModelId": "Embedding-3",
+      "aliases": ["embedding-3"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "unsplitTokenRate": 0.5,
+      "unsplitBatchRate": 0.25,
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "8K，单价 0.5；Batch API 0.25", "buckets": { "input": null, "cachedInput": null, "output": null } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "doc_url_slug",
+      "note": "向量模型仅给单一单价，未区分输入/输出桶"
+    },
+    {
+      "officialModelId": "embedding-2",
+      "aliases": ["Embedding-2"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "unsplitTokenRate": 0.5,
+      "unsplitBatchRate": 0.25,
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "8K，单价 0.5；Batch API 0.25", "buckets": { "input": null, "cachedInput": null, "output": null } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "request_example",
+      "note": "向量模型仅给单一单价，未区分输入/输出桶"
+    },
+    {
+      "officialModelId": "CodeGeeX-4",
+      "aliases": ["codegeex-4"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "unsplitTokenRate": 0.1,
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "128K，单价 0.1", "buckets": { "input": null, "cachedInput": null, "output": null } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "note": "仅给单一单价，未区分输入/输出桶；Batch API 价未标注"
+    },
+    {
+      "officialModelId": "Rerank",
+      "aliases": ["rerank"],
+      "currency": "CNY",
+      "unit": "per_1m_tokens",
+      "unsplitTokenRate": 0.8,
+      "tiers": [
+        { "maxInputTokens": null, "maxOutputTokens": null, "label": "4K，单价 0.8", "buckets": { "input": null, "cachedInput": null, "output": null } }
+      ],
+      "cacheStorage": null,
+      "effectiveFrom": null,
+      "completeness": "partial",
+      "idEvidence": "pricing_display_name_only",
+      "note": "重排序模型仅给单一单价，未区分输入/输出桶；Batch API 价未标注"
+    }
+  ],
+  "nonTokenItems": [
+    { "name": "GLM-Image", "category": "image_generation", "pricing": { "unit": "per_call", "price": 0.1, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "多分辨率" },
+    { "name": "CogView-4", "category": "image_generation", "pricing": { "unit": "per_call", "price": 0.06, "currency": "CNY" }, "batchPrice": { "supported": true, "unit": "per_call", "price": 0.03 }, "spec": "多分辨率" },
+    { "name": "CogView-3-Flash", "category": "image_generation", "pricing": { "unit": "per_call", "price": 0, "currency": "CNY", "note": "官方明确免费" }, "batchPrice": { "supported": false }, "spec": "多分辨率" },
+    { "name": "CogVideoX-3", "category": "video_generation", "pricing": { "unit": "per_call", "price": 1, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "多分辨率" },
+    { "name": "CogVideoX-2", "category": "video_generation", "pricing": { "unit": "per_call", "price": 0.5, "currency": "CNY" }, "batchPrice": { "supported": true, "unit": "per_call", "price": 0.25 }, "spec": "多分辨率" },
+    { "name": "CogVideoX-Flash", "category": "video_generation", "pricing": { "unit": "per_call", "price": 0, "currency": "CNY", "note": "官方明确免费" }, "batchPrice": { "supported": false }, "spec": "多分辨率" },
+    { "name": "ViduQ1-Text", "category": "video_generation", "pricing": { "unit": "per_call", "price": 2.5, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "1080p", "mode": "文生视频" },
+    { "name": "ViduQ1-Image", "category": "video_generation", "pricing": { "unit": "per_call", "price": 2.5, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "1080p", "mode": "图生视频" },
+    { "name": "ViduQ1-Start-End", "category": "video_generation", "pricing": { "unit": "per_call", "price": 2.5, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "1080p", "mode": "首尾帧" },
+    { "name": "Vidu2-Image", "category": "video_generation", "pricing": { "unit": "per_call", "price": 1.25, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "720p", "mode": "图生视频" },
+    { "name": "Vidu2-Start-End", "category": "video_generation", "pricing": { "unit": "per_call", "price": 1.25, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "720p", "mode": "首尾帧" },
+    { "name": "Vidu2-Reference", "category": "video_generation", "pricing": { "unit": "per_call", "price": 2.5, "currency": "CNY" }, "batchPrice": { "supported": false }, "spec": "720p", "mode": "参考生视频" },
+    { "name": "GLM-TTS", "category": "speech_synthesis", "pricing": { "unit": "per_10k_chars", "price": 2, "currency": "CNY" } },
+    { "name": "GLM-TTS-Clone", "category": "voice_clone", "pricing": { "unit": "per_call", "price": 6, "currency": "CNY" } },
+    { "name": "GLM-Realtime-Flash", "category": "realtime_av", "pricing": { "unit": "per_minute", "audioPrice": 0.18, "videoPrice": 1.2, "currency": "CNY" } },
+    { "name": "GLM-Realtime-Air", "category": "realtime_av", "pricing": { "unit": "per_minute", "audioPrice": 0.3, "videoPrice": 2.1, "currency": "CNY" } },
+    { "name": "Search-Std", "category": "web_search", "pricing": { "unit": "per_call", "price": 0.01, "currency": "CNY" }, "note": "智谱自研基础搜索" },
+    { "name": "Search-Pro", "category": "web_search", "pricing": { "unit": "per_call", "price": 0.03, "currency": "CNY" }, "note": "智谱自研专业搜索" },
+    { "name": "Search-Pro-Sogou", "category": "web_search", "pricing": { "unit": "per_call", "price": 0.05, "currency": "CNY" }, "note": "搜狗搜索" },
+    { "name": "Search-Pro-Quark", "category": "web_search", "pricing": { "unit": "per_call", "price": 0.05, "currency": "CNY" }, "note": "夸克搜索" },
+    { "name": "多模态知识入库（文件管理）", "category": "knowledge_service", "pricing": { "unit": "per_GB_storage", "price": 0, "currency": "CNY" }, "note": "1 GB 内存储免费；超出 1 GB 的入库存储单价官方定价页未列（本次核验未能读取），不得视为免费" },
+    { "name": "向量化（语义索引）", "category": "knowledge_service", "pricing": { "unit": "per_1m_tokens", "price": 0.5, "currency": "CNY" } },
+    { "name": "GLM-rerank-pro", "category": "knowledge_service", "pricing": { "unit": "per_1m_tokens", "price": 0.8, "currency": "CNY" } },
+    { "name": "深度解析（文档解析）", "category": "knowledge_service", "pricing": { "unit": "per_page", "price": 0.12, "currency": "CNY" } },
+    { "name": "图片理解（图像解析）", "category": "knowledge_service", "pricing": { "unit": "per_call", "price": 0, "currency": "CNY", "note": "官方明确免费" } },
+    { "name": "上下文增强（上下文检索补全增强）", "category": "knowledge_service", "pricing": { "unit": "per_call", "price": 0, "currency": "CNY", "note": "官方明确免费" } },
+    { "name": "knowledge_capacity（知识库容量扩容）", "category": "knowledge_service", "pricing": { "unit": "per_GB_hour", "price": 0.04, "currency": "CNY" } }
+  ],
+  "notes": "来源：智谱官方 API 定价页 https://docs.bigmodel.cn/cn/guide/start/pricing 及其 Mintlify Markdown 镜像 pricing.md（2026-11-01 20:53-21:00 +08:00 抓取，HTTP 200，HTML 与 md 内容一致）。脱敏样本，不含任何 API key/token。单位：官方统一为『元/百万 Tokens』，故 unit=per_1m_tokens（CNY）。官方计费公式：调用费用 = 未命中缓存的输入费用 + 缓存命中费用 + 输出费用 + 缓存存储费用。字段约定：(1) tiers[].maxInputTokens 为输入长度分档上界（左闭右开，[0,N) 则记 N；顶层无上界记 null）；(2) maxOutputTokens 仅出现在 GLM-4.7/GLM-4.5-Air 的输出长度联合分档（[0,0.2K) 记 200，≥0.2K 记 null）；官方未明示 K 进制，数值按 1K=1000 换算，label 保留官方原文；(3) buckets.cachedInput=null 表示官方标注『不支持』（不支持缓存计价，不是免费），0 仅表示官方明确『免费/不计费』；(4) 官方价格表未区分输入/输出的单一 token 单价（GLM-4-Voice、Embedding-2/3、CodeGeeX-4、Rerank）以 unsplitTokenRate 记录，buckets 置 null，计价前需分桶语义确认；(5) cacheStorage.status=limited_time_free 表示缓存存储（元/百万 Tokens/小时口径）当前限时免费、现价 0，postPromoPrice=null 表示免费期后标准价官方暂不公布（页面 FAQ 明示），不得猜测；(6) effectiveFrom=null：官方页面未标注任何价格生效日期，抓取时间不得当作生效时间；未发现未来生效价格；(7) idEvidence 取值 model_code（模型详情页 Model Code 显式给出）/ request_example（官方请求示例中的 model 字段）/ doc_url_slug（仅官方文档 URL slug 推定）/ pricing_display_name_only（仅定价页展示名，API ID 未证实），其中前两类对应 completeness=full，后两类为 partial；(8) Batch API：支持的模型按标准价 5 折；Embedding-2/3、CogView-4、CogVideoX-2 的 Batch 价官方单列（0.25/0.25/0.03/0.25），其余 token 模型的 Batch 支持范围见 batch.md，本样本不展开；(9) nonTokenItems 为按次/按分钟/按字符/按页/按 GB 计费项，严禁套用文本 token 公式；(10) 稳定机器可读来源：无官方 JSON 价格 API；docs.bigmodel.cn 的 *.md 原始 Markdown 端点与 llms.txt 索引可供机器读取；bigmodel.cn/pricing 为 JS SPA 无服务端价格内容（本次核验未能读取/解析，来源状态为不可用）。已知缺口详见 docs/source-verification/glm.zh-CN.md 第 7 节。"
+}

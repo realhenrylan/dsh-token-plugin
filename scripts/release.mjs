@@ -3,7 +3,7 @@ import https from 'node:https'
 import fs from 'node:fs'
 import path from 'node:path'
 
-const REPO = 'feiyang-dev/dsh-usage-plugin'
+const REPO = 'realhenrylan/dsh-token-plugin'
 const VERSION = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf8')).version
 const TAG = `v${VERSION}`
 
