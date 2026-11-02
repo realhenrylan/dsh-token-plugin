@@ -85,7 +85,7 @@
 
 - 脚注 (1) 原文要点：「模型名请使用 `deepseek-flash`。旧模型名 `deepseek-v4-flash`、`deepseek-v4-flash-vision-exp` 仍可调用，但对应模型已下线，请求将由 DeepSeek-V4.1-Flash-1017 模型提供服务，并按 Flash 价格计费。」
 - **注意一处历史公告与现行状态不一致**：news260910.md 曾宣布「北京时间 2026 年 9 月 14 日 12:00 之后……用户访问 `deepseek-v4-pro` 的请求将全部路由到 V4.1 Flash，并按 V4.1 Flash 单价计费」；但 updates.md 2026-09-10 条目随后更新为「为响应广大用户的需求，我们决定在 2026 年 9 月 14 日之后**继续提供 DeepSeek V4 Pro 的 API 调用服务，计费方式保持不变**」，且现行价格页仍单列 `deepseek-v4-pro` 价格列与 DeepSeek-V4-Pro-0813 版本。**以现行价格页为准：`deepseek-v4-pro` 按 V4 Pro 价格计费**；未来 V4.1 Pro 上线后路由可能变化。
-- 别名适用范围：仅限 DeepSeek 官方 API（api.deepseek.com）上的模型名路由；不代表第三方平台同名模型。
+- 别名适用范围：`deepseek-v4-flash`、`deepseek-v4-flash-vision-exp`（scope `*`）按本脚注折算 `deepseek-flash` 价目，适用于任何平台上的这两个模型名路由；但第三方市场**自造的**命名（如 Command Code GOAT 的 `deepseek/deepseek-v4.1-flash`）不自动套用——需按该市场模型目录 + 本脚注另行核验，登记为 scope 限定该平台的别名（见 command-code-goat.zh-CN.md）。
 
 ## Search / Fetch 按次计费（核实结果）
 

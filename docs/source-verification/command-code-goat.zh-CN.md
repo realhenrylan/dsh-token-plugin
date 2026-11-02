@@ -16,3 +16,16 @@ DSH 自定义 API route 的 provider id 由用户设定，`llm/stream` 的 `opti
 
 默认套餐月费为 `10`（官方公开价 $10/月，2026-11-02 核验；实付不同可在面板修改），币种 USD，来源链接指向 GOAT 官方说明。额度规则仅存档核验，本阶段不实现窗口、百分比或剩余额度模拟。
 
+## 第三方市场模型别名核验（2026-11-02）
+
+GOAT 模型目录（`https://api.commandcode.ai/provider/v1/models`）中的以下市场 ID 逐条核实后映射到开发方官方型号，登记为 scope 限定 `command-code-goat` 的别名（在哪家核验在哪家生效，不外推到其他平台）：
+
+| 市场 ID（route 模型名） | 映射官方型号 | 依据 |
+| --- | --- | --- |
+| `deepseek/deepseek-v4.1-flash`、`deepseek-v4.1-flash` | `deepseek-flash` | GOAT 目录 + DeepSeek 价格页脚注 1（旧名请求由 DeepSeek-V4.1-Flash-1017 提供服务并按 Flash 价格计费，见 deepseek.zh-CN.md） |
+| `xiaomi/mimo-v2.6-flash` | `mimo-v2.6-flash` | GOAT 目录 ID 与小米官方型号名对应（去厂商前缀），官方条目已在校验价目目录 |
+| `z-ai/glm-5.3-flash` | `glm-5.3-flash` | GOAT 目录 ID 与智谱官方型号名对应（去厂商前缀），官方条目已在校验价目目录 |
+
+- `meta/muse-spark-1.3-contributor`、`inclusionai/ling-3.1-flash-1019:free`、`claude-haiku-5-5` 在五家核验源中均无官方价目 → 维持「未计价」显形（金额 null，不进汇总与订阅回本分子），不按相似度猜价。
+- 别名登记在 lib/pricing/sources/index.js 的 `MARKETPLACE_ALIASES`，挂在 parse 出口（seed 生成与运行时刷新同路，刷新不会冲掉）；测试见 test/marketplace-alias.test.js。
+

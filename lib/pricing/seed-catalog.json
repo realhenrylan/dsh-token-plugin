@@ -1,13 +1,13 @@
 {
   "catalogVersion": 1,
-  "updatedAt": 1793539275281,
+  "updatedAt": 1793630301686,
   "sources": {
     "deepseek": {
       "sourceId": "deepseek",
       "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
       "vendor": "DeepSeek",
       "status": "ok",
-      "fetchedAt": 1793539275278,
+      "fetchedAt": 1793630301683,
       "models": [
         {
           "sourceId": "deepseek",
@@ -24,6 +24,18 @@
               "id": "deepseek-v4-flash-vision-exp",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "deepseek/deepseek-v4.1-flash",
+              "scope": [
+                "command-code-goat"
+              ]
+            },
+            {
+              "id": "deepseek-v4.1-flash",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -378,7 +390,7 @@
       "sourceUrl": "https://mimo.mi.com/docs/pricing",
       "vendor": "小米 MiMo",
       "status": "ok",
-      "fetchedAt": 1793539275278,
+      "fetchedAt": 1793630301684,
       "models": [
         {
           "sourceId": "mimo",
@@ -461,6 +473,12 @@
               "id": "MiMo V2.6 Flash",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "xiaomi/mimo-v2.6-flash",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -675,7 +693,7 @@
       "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
       "vendor": "千问 Qwen（百炼）",
       "status": "ok",
-      "fetchedAt": 1793539275279,
+      "fetchedAt": 1793630301684,
       "models": [
         {
           "sourceId": "qwen",
@@ -1496,7 +1514,7 @@
       "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
       "vendor": "Kimi（月之暗面）",
       "status": "ok",
-      "fetchedAt": 1793539275280,
+      "fetchedAt": 1793630301685,
       "models": [
         {
           "sourceId": "kimi",
@@ -1816,7 +1834,7 @@
       "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
       "vendor": "智谱 GLM",
       "status": "ok",
-      "fetchedAt": 1793539275281,
+      "fetchedAt": 1793630301686,
       "models": [
         {
           "sourceId": "glm",
@@ -1873,6 +1891,12 @@
               "id": "GLM-5.3-Flash",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "z-ai/glm-5.3-flash",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],

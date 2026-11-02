@@ -13,6 +13,7 @@
 ### 新增 / Added
 
 - **订阅制 Coding Plan 适配（计费通道标注 + 套餐登记 + 订阅回本视图）**：接入 OpenCode Go / Command Code GOAT 这类「订阅月费 + 配额」的 coding plan 时，官方按量价参考金额继续作为统一计价基准，订阅适配做成其上的一层标注，不另起一套计价。① 每条调用新增**计费通道** `channel` 标注（`plan:<套餐>` / `per_token` / 未标注），**写入时冻结**，旧记录不迁移不改写；② 新增**订阅套餐登记表** `plans.json`（面板「设置」页登记：套餐 ID、每期费用/币种/周期、Provider ID 与模型 ID 归因规则），内置 `opencode-go` 与 `command-code-goat` 两条默认套餐（默认预填官方公开价 $10/月，实付不同如 Go Plus $40 可在面板修改）；自动归因按 **Provider ID 精确匹配**（大小写不敏感）+ 模型 ID 精确匹配，**歧义不猜**——多套餐同时命中保持未标注，仅当某套餐显式开启「排除法归属」时未命中调用才归入按量通道；③ 概览新增**「订阅回本」卡**（订阅通道等效官方价 ÷ 月费的倍数），明细与汇总**按通道分列**（订阅等效官方价 / 按量 / 未标注 / 未计价分别展示，不合并成单一总额）；④ CSV / JSON 导出新增计费通道列，PNG 报告标注订阅条数；⑤ 「设置」页新增**「手动标记计费通道」**（按会话 ID 或北京日期范围批量标注 / 清除，不改金额，Web Search 计次不参与标注），持久化失败自动回滚；⑥ API 新增 `plans`（查询 / 登记套餐）与 `markChannel`（手动标注）动作。边界与约定：订阅调用金额一律是**等效官方价**（按官方按量价折算的参考值），不代表实付账单，实付为订阅月费；GOAT 的订阅与按量共用同一 API 端点，仅凭 endpoint 无法区分归属，必须为订阅配置**专属 Provider ID** 才能自动归因；配额窗口（5h / 周 / 月限额）本版只做核验存档、暂不模拟展示。属宿主改动，需重启 DSH。
+- **第三方市场已核验模型别名（scope 限定，不猜）**：Command Code GOAT 模型目录里的 `deepseek/deepseek-v4.1-flash`、`deepseek-v4.1-flash`、`xiaomi/mimo-v2.6-flash`、`z-ai/glm-5.3-flash` 经逐条核验映射到 `deepseek-flash` / `mimo-v2.6-flash` / `glm-5.3-flash` 的官方价目（依据存档见 `docs/source-verification/`），登记为 **scope 限定 `command-code-goat`** 的别名——在哪家核验在哪家生效，不外推到其他平台、不做前缀/模糊匹配；`meta/muse-spark-1.3-contributor`、`inclusionai/ling-3.1-flash-1019:free`、`claude-haiku-5-5` 在核验源中无官方价目，维持「未计价」显形（金额 null）不猜价。属宿主改动，需重启 DSH。
 
 ### 修复 / Fixed
 
