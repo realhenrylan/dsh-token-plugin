@@ -1,13 +1,13 @@
 {
   "catalogVersion": 1,
-  "updatedAt": 1793630301686,
+  "updatedAt": 1793635798225,
   "sources": {
     "deepseek": {
       "sourceId": "deepseek",
       "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
       "vendor": "DeepSeek",
       "status": "ok",
-      "fetchedAt": 1793630301683,
+      "fetchedAt": 1793635798221,
       "models": [
         {
           "sourceId": "deepseek",
@@ -34,6 +34,18 @@
             },
             {
               "id": "deepseek-v4.1-flash",
+              "scope": [
+                "command-code-goat"
+              ]
+            },
+            {
+              "id": "deepseek/deepseek-v4-flash",
+              "scope": [
+                "command-code-goat"
+              ]
+            },
+            {
+              "id": "deepseek/deepseek-v4-flash-vision-exp",
               "scope": [
                 "command-code-goat"
               ]
@@ -191,7 +203,14 @@
           "sourceId": "deepseek",
           "sourceUrl": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing/",
           "officialModelId": "deepseek-v4-pro",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "deepseek/deepseek-v4-pro",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -390,7 +409,7 @@
       "sourceUrl": "https://mimo.mi.com/docs/pricing",
       "vendor": "小米 MiMo",
       "status": "ok",
-      "fetchedAt": 1793630301684,
+      "fetchedAt": 1793635798222,
       "models": [
         {
           "sourceId": "mimo",
@@ -407,6 +426,12 @@
               "id": "MiMo V2.6 Pro",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "xiaomi/mimo-v2.6-pro",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -552,6 +577,12 @@
               "scope": [
                 "*"
               ]
+            },
+            {
+              "id": "xiaomi/mimo-v2.6-pro-ultraspeed",
+              "scope": [
+                "command-code-goat"
+              ]
             }
           ],
           "currency": "CNY",
@@ -693,7 +724,7 @@
       "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
       "vendor": "千问 Qwen（百炼）",
       "status": "ok",
-      "fetchedAt": 1793630301684,
+      "fetchedAt": 1793635798223,
       "models": [
         {
           "sourceId": "qwen",
@@ -748,7 +779,14 @@
           "sourceId": "qwen",
           "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
           "officialModelId": "qwen3.8-27b",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "Qwen/Qwen3.8-27B",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn-beijing",
@@ -1010,6 +1048,18 @@
               "scope": [
                 "*"
               ]
+            },
+            {
+              "id": "Qwen/Qwen3.8-Max",
+              "scope": [
+                "command-code-goat"
+              ]
+            },
+            {
+              "id": "Qwen/Qwen3.8-Max-0902",
+              "scope": [
+                "command-code-goat"
+              ]
             }
           ],
           "currency": "CNY",
@@ -1066,6 +1116,12 @@
               "scope": [
                 "*"
               ]
+            },
+            {
+              "id": "Qwen/Qwen3.7-Max",
+              "scope": [
+                "command-code-goat"
+              ]
             }
           ],
           "currency": "CNY",
@@ -1113,6 +1169,12 @@
               "id": "qwen3.7-plus-2026-05-26",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "Qwen/Qwen3.7-Plus",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -1173,6 +1235,12 @@
               "id": "qwen3.6-plus-2026-04-02",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "Qwen/Qwen3.6-Plus",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -1349,7 +1417,14 @@
           "sourceId": "qwen",
           "sourceUrl": "https://help.aliyun.com/zh/model-studio/model-pricing",
           "officialModelId": "qwen3.8-flash",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "Qwen/Qwen3.8-Flash",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn-beijing",
@@ -1398,6 +1473,12 @@
               "id": "qwen3.7-flash-2026-07-15",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "Qwen/Qwen3.7-Flash",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -1514,13 +1595,20 @@
       "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
       "vendor": "Kimi（月之暗面）",
       "status": "ok",
-      "fetchedAt": 1793630301685,
+      "fetchedAt": 1793635798224,
       "models": [
         {
           "sourceId": "kimi",
           "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
           "officialModelId": "kimi-k3.1-pro",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "moonshotai/Kimi-K3.1-Pro",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -1622,7 +1710,14 @@
           "sourceId": "kimi",
           "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
           "officialModelId": "kimi-k3",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "moonshotai/Kimi-K3",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -1681,7 +1776,14 @@
           "sourceId": "kimi",
           "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
           "officialModelId": "kimi-k2.7-code",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "moonshotai/Kimi-K2.7-Code",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -1733,7 +1835,14 @@
           "sourceId": "kimi",
           "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
           "officialModelId": "kimi-k2.7-code-highspeed",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "moonshotai/Kimi-K2.7-Code-Highspeed",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -1772,7 +1881,14 @@
           "sourceId": "kimi",
           "sourceUrl": "https://platform.kimi.com/docs/pricing/chat",
           "officialModelId": "kimi-k2.6",
-          "aliases": [],
+          "aliases": [
+            {
+              "id": "moonshotai/Kimi-K2.6",
+              "scope": [
+                "command-code-goat"
+              ]
+            }
+          ],
           "currency": "CNY",
           "unit": "per_1m_tokens",
           "region": "cn",
@@ -1834,7 +1950,7 @@
       "sourceUrl": "https://docs.bigmodel.cn/cn/guide/start/pricing",
       "vendor": "智谱 GLM",
       "status": "ok",
-      "fetchedAt": 1793630301686,
+      "fetchedAt": 1793635798225,
       "models": [
         {
           "sourceId": "glm",
@@ -1845,6 +1961,12 @@
               "id": "GLM-5.3",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "zai-org/GLM-5.3",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -1944,6 +2066,12 @@
               "scope": [
                 "*"
               ]
+            },
+            {
+              "id": "z-ai/glm-5.3-flashx",
+              "scope": [
+                "command-code-goat"
+              ]
             }
           ],
           "currency": "CNY",
@@ -2036,6 +2164,12 @@
               "scope": [
                 "*"
               ]
+            },
+            {
+              "id": "zai-org/GLM-5.2",
+              "scope": [
+                "command-code-goat"
+              ]
             }
           ],
           "currency": "CNY",
@@ -2081,6 +2215,12 @@
               "id": "glm-5.1",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "zai-org/GLM-5.1",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
@@ -2197,6 +2337,12 @@
               "id": "glm-5",
               "scope": [
                 "*"
+              ]
+            },
+            {
+              "id": "zai-org/GLM-5",
+              "scope": [
+                "command-code-goat"
               ]
             }
           ],
