@@ -76,6 +76,30 @@ test('recordKey still collapses a genuine duplicate', () => {
   assert.equal(recordKey(normalizeRecord(fields)), recordKey(normalizeRecord({ ...fields })))
 })
 
+test('channel metadata survives record normalization without changing record identity', () => {
+  const fields = { time: 1000, model: 'm', provider: 'p', sessionId: 's', inputTokens: 1 }
+  const plan = normalizeRecord({ ...fields, channel: { v: 1, kind: 'plan', planId: 'sample-plan', basis: 'provider:p' } })
+  const perToken = normalizeRecord({ ...fields, channel: { v: 1, kind: 'per_token', basis: 'manual:2026-11-02T00:00:00.000Z' } })
+  assert.deepEqual(plan.channel, { v: 1, kind: 'plan', planId: 'sample-plan', basis: 'provider:p' })
+  assert.deepEqual(perToken.channel, { v: 1, kind: 'per_token', basis: 'manual:2026-11-02T00:00:00.000Z' })
+  assert.equal(recordKey(plan), recordKey(perToken))
+})
+
+test('malformed channel data is discarded without losing the usage record', () => {
+  const malformed = [
+    { v: 2, kind: 'plan', planId: 'x' },
+    { v: 1, kind: 'plan', planId: '' },
+    { v: 1, kind: 'unknown' },
+    { v: 1, kind: 'per_token', basis: 42 }
+  ]
+  for (const channel of malformed) {
+    const record = normalizeRecord({ time: 1, model: 'm', channel })
+    assert.equal(record.time, 1)
+    assert.equal('channel' in record, false)
+  }
+  assert.equal('channel' in normalizeRecord({ time: 1 }), false)
+})
+
 test('recordKey prefers the probe UUID when present', () => {
   const a = normalizeRecord({ time: 1, recordId: 'abc', inputTokens: 1 })
   const b = normalizeRecord({ time: 2, recordId: 'abc', inputTokens: 99 })

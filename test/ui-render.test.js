@@ -179,6 +179,67 @@ test('cache list view renders without throwing', async () => {
   assert.ok(out.length > 0)
 })
 
+test('plan month ROI uses Beijing month boundaries and excludes unpriced and interrupted calls', async () => {
+  const { __views } = await loadClient()
+  const bj = new Date(Date.now() + 8 * 60 * 60 * 1000)
+  const monthStart = Date.UTC(bj.getUTCFullYear(), bj.getUTCMonth(), 1) - 8 * 60 * 60 * 1000
+  const plan = { id: 'sample-plan', name: 'Sample', currency: 'CNY', monthlyFee: 10, cycle: 'month' }
+  const records = [
+    { time: monthStart, channel: { kind: 'plan', planId: plan.id }, official: { amount: 20, status: 'priced' } },
+    { time: monthStart + 1000, channel: { kind: 'plan', planId: plan.id }, official: { amount: 5, estimated: true } },
+    { time: monthStart + 2000, channel: { kind: 'plan', planId: plan.id }, official: { amount: null } },
+    { time: monthStart - 1, channel: { kind: 'plan', planId: plan.id }, official: { amount: 100 } },
+    { time: monthStart + 3000, channel: { kind: 'plan', planId: 'other-plan' }, official: { amount: 200 } },
+    { time: monthStart + 4000, interrupted: true, channel: { kind: 'plan', planId: plan.id }, official: { amount: 500 } }
+  ]
+  const first = __views.planMonthSummary(records, plan, 7)
+  assert.equal(first.amount, 25)
+  assert.equal(first.calls, 3)
+  assert.equal(first.unpriced, 1)
+  assert.equal(first.estimated, 1)
+  assert.equal(first.ratio, 2.5)
+  const updatedFee = __views.planMonthSummary(records, { ...plan, monthlyFee: 20 }, 7)
+  assert.equal(updatedFee.amount, 25)
+  assert.equal(updatedFee.ratio, 1.25)
+})
+
+test('plan views render channel amounts, manual marking, and the payment caveat', async () => {
+  const { __views } = await loadClient()
+  const plan = { id: 'sample-plan', name: 'Sample Plan', currency: 'CNY', monthlyFee: 10, cycle: 'month', match: { providers: ['plan-route'], models: [], excludeUnmatched: false } }
+  const records = [sampleRecord({ channel: { v: 1, kind: 'plan', planId: plan.id, basis: 'manual:2026-11-02T00:00:00.000Z' } })]
+  const searchRecord = sampleRecord({ recordId: 'search', purpose: 'web-search', origin: 'search-backend' })
+  const output = []
+  flatten(__views.PriceView({
+    pricing: defaultPricing(), plans: { v: 1, plans: [plan] }, records: records.concat(searchRecord),
+    pricingSources: [], officialModels: {}, budget: null, fx: { rate: 7.1 },
+    onPlanSave() { return Promise.resolve({ ok: true }) }, onPlanDelete() { return Promise.resolve({ ok: true }) },
+    onPlanReset() { return Promise.resolve({ ok: true }) }, onMarkChannel() { return Promise.resolve({ ok: true, marked: 1 }) }
+  }), output, 0)
+  const text = output.join(' ')
+  assert.match(text, /订阅套餐/)
+  assert.match(text, /手动标记计费通道/)
+  assert.match(text, /专属 Provider ID/)
+  assert.match(text, /匹配记录：1/)
+
+  const overview = []
+  flatten(__views.OverviewView({ records, plans: { v: 1, plans: [plan] }, fx: { rate: 7.1 }, days: sampleDays(), budget: null }), overview, 0)
+  assert.match(overview.join(' '), /订阅回本/)
+  assert.match(overview.join(' '), /不代表实付金额/)
+})
+
+test('subscription copy has English translations', async () => {
+  const { __i18n } = await loadClient()
+  const keys = [
+    '订阅套餐', '手动标记计费通道', '计费通道金额', '订阅等效', ' 次已计价',
+    '按量与订阅金额在计费通道列分开展示。', '本月按量官方价', '按通道分列', '按量/等效价',
+    '计费口径提示：本报告含订阅通道记录 ', ' 条；PNG 金额沿用峰谷价口径，订阅金额请查看面板中的等效官方价，不代表实付金额。',
+    '套餐登记表读取失败，原文件已保留；当前显示的是内存默认值。保存更改会在成功写入后替换无法读取的文件。',
+    '订阅套餐调用显示的是等效官方价（按官方按量价折算的参考值），不代表实付金额；实付为订阅月费。'
+  ]
+  __i18n.setLang('en')
+  for (const key of keys) assert.notEqual(__i18n.t(key), key, 'missing English text: ' + key)
+})
+
 // 回归：undici v7 的 request() 不再接受 maxRedirections，传了会直接抛
 // "maxRedirections is not supported, use the redirect interceptor"，
 // 导致余额查询、汇率刷新整体失败（1.22.0 线上回归）。

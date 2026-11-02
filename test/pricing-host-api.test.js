@@ -80,9 +80,9 @@ async function freshPlugin(t) {
     if (prev === undefined) delete process.env.DSH_USAGE_DATA_DIR
     else process.env.DSH_USAGE_DATA_DIR = prev
   })
-  const { ctx, routes } = makeCtx()
+  const { ctx, routes, listeners } = makeCtx()
   plugin.apply(ctx)
-  return { dir, routes }
+  return { dir, routes, listeners }
 }
 
 test('JSON export/import round-trips the pricingSnapshot and its status', async (t) => {
@@ -97,6 +97,7 @@ test('JSON export/import round-trips the pricingSnapshot and its status', async 
           time: 1793500000000, model: 'qwen/qwen3.6-27b', provider: 'siliconflow',
           inputTokens: 1000000, outputTokens: 0, cacheReadTokens: 0, cacheWriteTokens: 0,
           recordId: 'rec-priced',
+          channel: { v: 1, kind: 'plan', planId: 'opencode-go', basis: 'provider:verified-route' },
           pricingSnapshot: snapshotOf()
         },
         {
@@ -125,6 +126,7 @@ test('JSON export/import round-trips the pricingSnapshot and its status', async 
   const unpriced = data.records.find((r) => r.recordId === 'rec-unpriced')
   assert.deepEqual(priced.pricingSnapshot.prices, { input: 3, cacheRead: 3, cacheWrite: 0, output: 18 })
   assert.equal(priced.pricingSnapshot.status, 'priced')
+  assert.deepEqual(priced.channel, { v: 1, kind: 'plan', planId: 'opencode-go', basis: 'provider:verified-route' })
   assert.equal(unpriced.pricingSnapshot.prices.input, null)
   assert.equal(unpriced.pricingSnapshot.status, 'missing_price')
   assert.deepEqual(unpriced.pricingSnapshot.missing, ['input', 'output', 'cacheRead', 'cacheWrite'])
@@ -135,6 +137,8 @@ test('JSON export/import round-trips the pricingSnapshot and its status', async 
   assert.equal(data.official.summary.priced.count, 1)
   assert.equal(data.official.summary.priced.amount, 3)
   assert.equal(data.official.summary.unpriced.count, 1)
+  assert.equal(data.official.summary.channels.plans['opencode-go'].priced.count, 1)
+  assert.equal(data.official.summary.channels.perToken.unpriced.count, 1)
 
   // 再导入同一份导出：身份键相同，全部识别为重复（往返无损）
   const reimport = await callApi(routes, {
@@ -154,6 +158,7 @@ test('CSV keeps amount, currency, status, source and frozen marker', async (t) =
         {
           time: 1793500000000, model: 'qwen/qwen3.6-27b', provider: 'siliconflow',
           inputTokens: 1000000, outputTokens: 0, recordId: 'rec-priced',
+          channel: { v: 1, kind: 'plan', planId: 'opencode-go' },
           pricingSnapshot: snapshotOf()
         },
         {
@@ -173,6 +178,7 @@ test('CSV keeps amount, currency, status, source and frozen marker', async (t) =
   const csv = await fsp.readFile(exp.path, 'utf8')
   const [header, rowPriced, rowUnpriced] = csv.split('\r\n')
   const cols = header.split(',')
+  assert.ok(cols.includes('计费通道'))
   for (const name of ['officialAmount', 'officialCurrency', 'officialStatus', 'officialSource', 'officialModel', 'officialFrozen']) {
     assert.ok(cols.includes(name), 'CSV 缺列：' + name)
   }
@@ -182,6 +188,7 @@ test('CSV keeps amount, currency, status, source and frozen marker', async (t) =
     return out
   }
   const a = cells(rowPriced)
+  assert.equal(a['计费通道'], 'plan:opencode-go')
   assert.equal(a.officialAmount, '3')
   assert.equal(a.officialCurrency, 'CNY')
   assert.equal(a.officialStatus, 'priced')
@@ -193,6 +200,18 @@ test('CSV keeps amount, currency, status, source and frozen marker', async (t) =
   assert.equal(b.officialAmount, '')
   assert.equal(b.officialStatus, 'missing_price')
   assert.equal(b.officialSource, 'qwen')
+
+  const csvImport = await callApi(routes, {
+    action: 'import', filename: 'channel.csv',
+    content: [
+      'time,model,provider,计费通道,inputTokens,outputTokens,cacheReadTokens,cacheWriteTokens,reasoningTokens,finishReason',
+      '1793600000000,model-from-csv,verified-route,plan:csv-plan,8,2,0,0,0,stop'
+    ].join('\n')
+  })
+  assert.equal(csvImport.ok, true)
+  const list = await callApi(routes, { action: 'list' })
+  const imported = list.records.find((r) => r.model === 'model-from-csv')
+  assert.deepEqual(imported.channel, { v: 1, kind: 'plan', planId: 'csv-plan' })
 })
 
 test('repriceAll keeps official snapshots unless explicitly told otherwise', async (t) => {
@@ -237,4 +256,121 @@ test('list exposes official summary and per-source pricing status', async (t) =>
   assert.ok(Array.isArray(r.pricingSources))
   assert.ok(r.pricingSources.length >= 5)
   assert.ok(r.officialCatalogVersion != null)
+})
+
+test('plans API persists registrations and manual channel marks round-trip', async (t) => {
+  const { dir, routes } = await freshPlugin(t)
+  const before = await callApi(routes, { action: 'stat' })
+  const initial = await callApi(routes, { action: 'list' })
+  assert.deepEqual(initial.plans.plans.map((plan) => plan.id), ['opencode-go', 'command-code-goat'])
+  assert.ok(initial.plans.plans.every((plan) => plan.match.providers.length === 0))
+
+  const plan = {
+    id: 'verified-plan', name: 'Verified Plan', currency: 'CNY', monthlyFee: 60, cycle: 'month',
+    match: { providers: ['verified-route'], models: [], excludeUnmatched: false }, sourceUrl: '', note: ''
+  }
+  const saved = await callApi(routes, { action: 'plans', op: 'save', plan })
+  assert.equal(saved.ok, true)
+  assert.equal((await callApi(routes, { action: 'stat' })).pricingVersion > before.pricingVersion, true)
+  const plansFile = path.join(dir, 'dsh-usage', 'plans.json')
+  const storedPlanText = await fsp.readFile(plansFile, 'utf8')
+  assert.equal(JSON.parse(storedPlanText).plans.find((row) => row.id === plan.id).monthlyFee, 60)
+  const rejected = await callApi(routes, { action: 'plans', op: 'save', plan: { ...plan, monthlyFee: -1 } })
+  assert.equal(rejected.ok, false)
+  assert.equal(await fsp.readFile(plansFile, 'utf8'), storedPlanText)
+
+  const usageDir = path.join(dir, 'dsh-usage')
+  const movedUsageDir = path.join(dir, 'dsh-usage-preserved')
+  await fsp.rename(usageDir, movedUsageDir)
+  await fsp.writeFile(usageDir, 'blocker', 'utf8')
+  const writeFailure = await callApi(routes, { action: 'plans', op: 'save', plan: { ...plan, monthlyFee: 90 } })
+  assert.equal(writeFailure.ok, false)
+  assert.match(writeFailure.error, /套餐登记表写入失败/)
+  assert.equal((await callApi(routes, { action: 'plans', op: 'get' })).plans.plans.find((row) => row.id === plan.id).monthlyFee, 60)
+  await fsp.unlink(usageDir)
+  await fsp.rename(movedUsageDir, usageDir)
+  assert.equal(await fsp.readFile(plansFile, 'utf8'), storedPlanText)
+
+  await callApi(routes, {
+    action: 'import', filename: 'calls.json',
+    content: JSON.stringify({ records: [
+      { time: 1793600000100, model: 'm1', provider: 'verified-route', sessionId: 'session-one', inputTokens: 1, recordId: 'mark-one' },
+      { time: 1793600000200, model: 'm2', provider: 'verified-route', sessionId: 'session-two', inputTokens: 1, recordId: 'mark-two' }
+    ] })
+  })
+  const marked = await callApi(routes, { action: 'markChannel', kind: 'plan', planId: plan.id, sessionId: 'session-one' })
+  assert.equal(marked.ok, true)
+  assert.equal(marked.marked, 1)
+  let list = await callApi(routes, { action: 'list' })
+  assert.deepEqual(list.records.find((r) => r.recordId === 'mark-one').channel.kind, 'plan')
+  assert.equal(list.records.find((r) => r.recordId === 'mark-one').channel.planId, plan.id)
+  assert.match(list.records.find((r) => r.recordId === 'mark-one').channel.basis, /^manual:/)
+  assert.equal('channel' in list.records.find((r) => r.recordId === 'mark-two'), false)
+
+  const dateMarked = await callApi(routes, { action: 'markChannel', kind: 'per_token', from: 1793600000000, to: 1793600000300 })
+  assert.equal(dateMarked.ok, true)
+  assert.equal(dateMarked.marked, 2)
+  list = await callApi(routes, { action: 'list' })
+  assert.deepEqual(list.records.find((r) => r.recordId === 'mark-two').channel.kind, 'per_token')
+  assert.match(list.records.find((r) => r.recordId === 'mark-two').channel.basis, /^manual:/)
+  const storedRecords = JSON.parse(await fsp.readFile(path.join(dir, 'dsh-usage', 'usage-records.json'), 'utf8'))
+  assert.equal(storedRecords.find((r) => r.recordId === 'mark-one').channel.kind, 'per_token')
+
+  const cleared = await callApi(routes, { action: 'markChannel', kind: 'unmarked', sessionId: 'session-one' })
+  assert.equal(cleared.marked, 1)
+  list = await callApi(routes, { action: 'list' })
+  assert.equal('channel' in list.records.find((r) => r.recordId === 'mark-one'), false)
+
+  const deleted = await callApi(routes, { action: 'plans', op: 'delete', id: plan.id })
+  assert.equal(deleted.ok, true)
+  const afterDelete = await callApi(routes, { action: 'list' })
+  assert.equal(afterDelete.records.some((r) => r.recordId === 'mark-two'), true)
+  assert.equal(afterDelete.plans.plans.some((row) => row.id === plan.id), false)
+})
+
+test('an invalid plans.json is preserved and surfaced to the client', async (t) => {
+  const dir = await fsp.mkdtemp(path.join(os.tmpdir(), 'dsh-plans-corrupt-'))
+  const usageDir = path.join(dir, 'dsh-usage')
+  await fsp.mkdir(usageDir, { recursive: true })
+  const plansFile = path.join(usageDir, 'plans.json')
+  await fsp.writeFile(plansFile, '{invalid registry', 'utf8')
+  const prev = process.env.DSH_USAGE_DATA_DIR
+  process.env.DSH_USAGE_DATA_DIR = dir
+  t.after(() => {
+    if (prev === undefined) delete process.env.DSH_USAGE_DATA_DIR
+    else process.env.DSH_USAGE_DATA_DIR = prev
+  })
+  const { ctx, routes } = makeCtx()
+  plugin.apply(ctx)
+  const list = await callApi(routes, { action: 'list' })
+  assert.match(list.plansError, /套餐登记表 JSON 无效/)
+  assert.equal(await fsp.readFile(plansFile, 'utf8'), '{invalid registry')
+})
+
+test('web_search backend events do not receive plan channel attribution', async (t) => {
+  const { routes, listeners } = await freshPlugin(t)
+  const plan = {
+    id: 'deepseek-route-plan', name: 'DeepSeek Route Plan', currency: 'CNY', monthlyFee: 20, cycle: 'month',
+    match: { providers: ['deepseek-official'], models: [], excludeUnmatched: false }, sourceUrl: '', note: ''
+  }
+  assert.equal((await callApi(routes, { action: 'plans', op: 'save', plan })).ok, true)
+  listeners['session/event']({ id: 'search-session' }, {
+    time: 1793600000000,
+    type: 'web/deepseek-search-llm-request',
+    data: {
+      endpoint: 'https://api.deepseek.com/anthropic/v1/messages',
+      body: { model: 'deepseek-chat', messages: [{ role: 'user', content: 'search request' }] }
+    }
+  })
+  const list = await callApi(routes, { action: 'list' })
+  let search = list.records.find((record) => record.purpose === 'web-search')
+  assert.ok(search)
+  assert.equal(search.provider, 'deepseek-official')
+  assert.equal('channel' in search, false)
+  const marked = await callApi(routes, {
+    action: 'markChannel', kind: 'plan', planId: plan.id, sessionId: 'search-session'
+  })
+  assert.equal(marked.marked, 0)
+  search = (await callApi(routes, { action: 'list' })).records.find((record) => record.purpose === 'web-search')
+  assert.equal('channel' in search, false)
 })
