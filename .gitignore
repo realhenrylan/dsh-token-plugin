@@ -4,4 +4,6 @@ node_modules/
 dsh-usage/
 release/
 .npmrc.local
+out.css
+out_*
 .DS_Store
