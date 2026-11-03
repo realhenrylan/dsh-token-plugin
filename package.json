@@ -84,8 +84,10 @@
     "sync": "node sync-to-profile.mjs",
     "wire": "node scripts/wire.js",
     "check": "node scripts/check-package.js",
-    "prepublishOnly": "node scripts/check-package.js",
-    "pack": "npm pack"
+    "pack": "npm pack",
+    "release": "node scripts/release-local.mjs",
+    "release:github": "node scripts/release.mjs",
+    "prepublishOnly": "node scripts/check-package.js"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": ">=4.0.1"

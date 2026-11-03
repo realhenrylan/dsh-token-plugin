@@ -92,6 +92,18 @@ dsh plugin --profile web add ./dsh-token-plugin-2.1.0.tgz
 
 更新时重新打包当前仓库，再使用上面的命令安装新安装包。卸载时运行 `dsh plugin --profile web remove dsh-token-plugin`，然后重启 DSH。
 
+### 发布（维护者）
+
+一条命令完成「升版本 + 测试 + 打包」：
+
+```bash
+npm run release -- patch   # 2.1.0 → 2.1.1；也可用 minor / major / 2.2.0
+```
+
+脚本会先跑全部测试，然后写入新版本号、同步 README 里的安装示例、把 CHANGELOG 的「## 未发布 (Unreleased)」段改成新版本标题，再跑插件契约校验并生成 `dsh-token-plugin-<version>.tgz`。加 `--dry-run` 只演练；`--no-changelog` 跳过 CHANGELOG 标题更新。脚本不会 commit / push / publish，结束时打印下一步命令。
+
+`npm run release:github` 会在已有 tag 与 CHANGELOG 版本段的基础上创建 GitHub Release 并上传 tgz（需要 git 凭据里的 token）。
+
 ## 数据与位置
 
 > **自 v1.9.2 起**，记录存储在**固定专用数据目录**中（修复 [#4](https://github.com/feiyang-dev/dsh-usage-plugin/issues/4)）。路径不再跟随会话工作区 / `~/.dsh` / 桌面端安装目录漂移，因此切换工作区时历史数据不会再"消失"（被统计为 0），且 UI 中显示的路径与真实落盘路径始终一致。

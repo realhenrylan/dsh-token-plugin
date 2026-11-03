@@ -91,6 +91,18 @@ So for users, **installation is one command** — no YAML editing, no manual fil
 
 To update, pack the current checkout again and install the resulting tarball using the command above. To uninstall, run `dsh plugin --profile web remove dsh-token-plugin` and restart DSH.
 
+### Releasing (maintainers)
+
+One command handles "bump version + test + pack":
+
+```bash
+npm run release -- patch   # 2.1.0 → 2.1.1; also minor / major / 2.2.0
+```
+
+The script runs the full test suite first, then writes the new version, syncs the install examples in both READMEs, turns the CHANGELOG "## 未发布 (Unreleased)" heading into the new version heading, runs the plugin contract check, and produces `dsh-token-plugin-<version>.tgz`. Add `--dry-run` to rehearse; `--no-changelog` skips the CHANGELOG heading update. It never commits, pushes, or publishes — it prints the next commands when done.
+
+`npm run release:github` creates the GitHub Release and uploads the tarball from the existing tag and CHANGELOG section (requires a token in git credentials).
+
 ## Data & locations
 
 > **Since v1.9.2**, records are stored in a **fixed, dedicated data directory** (fixes [#4](https://github.com/feiyang-dev/dsh-usage-plugin/issues/4)). The path no longer follows the session workspace / `~/.dsh` / desktop-app install dir, so your history never "disappears" (counted as 0) when the workspace changes, and the path shown in the UI equals the on-disk path.
