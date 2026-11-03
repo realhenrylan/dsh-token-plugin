@@ -8,6 +8,14 @@
 
 ---
 
+## 未发布 (Unreleased)
+
+### 文档 / Documentation
+
+- **明确标注上游来源**：在中英文 README 开头说明本仓库 fork 自 [feiyang-dev/dsh-usage-plugin](https://github.com/feiyang-dev/dsh-usage-plugin)，并链接上游仓库及 LICENSE。
+
+---
+
 ## v2.1.0 (2026-11-03)
 
 ### 新增 / Added
