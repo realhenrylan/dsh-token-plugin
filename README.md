@@ -1,5 +1,7 @@
 > Published on npm as `dsh-token-plugin`.
 
+> This project is a fork of [feiyang-dev/dsh-usage-plugin](https://github.com/feiyang-dev/dsh-usage-plugin) and continues development under the MIT License. The upstream copyright and license notice is retained in [LICENSE](./LICENSE).
+
 <div align="center">
 
 # DeepSeek Harness Usage & Cost Tracker (dsh-usage-plugin)
