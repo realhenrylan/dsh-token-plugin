@@ -1,5 +1,7 @@
 > 已发布到 npm，包名为 `dsh-token-plugin`。
 
+> 本项目 fork 自 [feiyang-dev/dsh-usage-plugin](https://github.com/feiyang-dev/dsh-usage-plugin)，并在 MIT 许可证下继续开发；上游版权与许可证声明保留在 [LICENSE](./LICENSE) 中。
+
 <div align="center">
 
 # DeepSeek Harness 用量与消耗插件（dsh-usage-plugin）
