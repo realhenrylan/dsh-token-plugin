@@ -103,6 +103,8 @@ The script runs the full test suite first, then writes the new version, syncs th
 
 `npm run release:github` creates the GitHub Release and uploads the tarball from the existing tag and CHANGELOG section (requires a token in git credentials).
 
+Local publish credentials can live in `.npmrc.local` at the repo root (gitignored, never packed); publish with `npm publish --userconfig .npmrc.local`.
+
 ## Data & locations
 
 > **Since v1.9.2**, records are stored in a **fixed, dedicated data directory** (fixes [#4](https://github.com/feiyang-dev/dsh-usage-plugin/issues/4)). The path no longer follows the session workspace / `~/.dsh` / desktop-app install dir, so your history never "disappears" (counted as 0) when the workspace changes, and the path shown in the UI equals the on-disk path.

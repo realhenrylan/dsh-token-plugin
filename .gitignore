@@ -3,4 +3,5 @@ node_modules/
 *.log
 dsh-usage/
 release/
+.npmrc.local
 .DS_Store

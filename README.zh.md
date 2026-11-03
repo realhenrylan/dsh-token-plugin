@@ -104,6 +104,8 @@ npm run release -- patch   # 2.1.0 → 2.1.1；也可用 minor / major / 2.2.0
 
 `npm run release:github` 会在已有 tag 与 CHANGELOG 版本段的基础上创建 GitHub Release 并上传 tgz（需要 git 凭据里的 token）。
 
+本地发布凭据可以放在仓库根目录的 `.npmrc.local`（已加入 `.gitignore`，不会进入仓库或发布包）；发布时用 `npm publish --userconfig .npmrc.local`。
+
 ## 数据与位置
 
 > **自 v1.9.2 起**，记录存储在**固定专用数据目录**中（修复 [#4](https://github.com/feiyang-dev/dsh-usage-plugin/issues/4)）。路径不再跟随会话工作区 / `~/.dsh` / 桌面端安装目录漂移，因此切换工作区时历史数据不会再"消失"（被统计为 0），且 UI 中显示的路径与真实落盘路径始终一致。
